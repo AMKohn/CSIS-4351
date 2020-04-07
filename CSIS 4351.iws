@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="184b2e35-1dda-4085-a661-edf98b924d1a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/frameless.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CSIS 4351.iws" beforeDir="false" afterPath="$PROJECT_DIR$/CSIS 4351.iws" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frameless.html" beforeDir="false" afterPath="$PROJECT_DIR$/frameless.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +50,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1586279890560</updated>
-      <workItem from="1586279895333" duration="10474000" />
+      <workItem from="1586279895333" duration="10717000" />
     </task>
     <servers />
   </component>
