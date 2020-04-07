@@ -16,8 +16,9 @@ li {
 body {
 	color: #212121;
 	font-size: 14px;
-	background: #CFD8DC;
+	overflow: hidden;
 	user-select: none;
+	background: #CFD8DC;
 	font-family: Roboto, sans-serif;
 }
 
