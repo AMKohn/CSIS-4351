@@ -1,0 +1,345 @@
+@import url("./switch.css");
+
+*, *:before, *:after {
+	border: 0;
+	margin: 0;
+	padding: 0;
+	outline: 0;
+	box-sizing: border-box;
+	background: transparent;
+}
+
+li {
+	display: block;
+}
+
+body {
+	color: #212121;
+	font-size: 14px;
+	background: #CFD8DC;
+	user-select: none;
+	font-family: Roboto, sans-serif;
+}
+
+.device {
+	margin: 45px auto 0;
+}
+
+.device-content {
+	position: relative;
+}
+
+.screen {
+	top: 0;
+	left: -100%;
+	bottom: 0;
+	width: 100%;
+	display: flex;
+	flex-flow: column;
+	position: absolute;
+	background: #FFF;
+	transition: left .3s ease;
+}
+
+.screen.visible {
+	left: 0;
+}
+
+.screen.visible ~ .screen {
+	left: 100%;
+}
+
+
+/*---------------------------------------------
+	/ Scrollbars
+*/
+::-webkit-scrollbar {
+	width: 8px;
+	height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+	background: rgba(0, 0, 0, .2);
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: rgba(0, 0, 0, .5);
+}
+
+::-webkit-scrollbar-thumb:active {
+	background: rgba(0, 0, 0, .3);
+}
+
+
+
+/*---------------------------------------------
+	/ Buttons
+*/
+.btn {
+	color: #FFF;
+	line-height: 1;
+	font-size: 13px;
+	cursor: pointer;
+	font-weight: 500;
+	padding: 12px 20px;
+	border-radius: 3px;
+	background: #2196F3;
+	vertical-align: top;
+	letter-spacing: .3px;
+	display: inline-block;
+	text-transform: uppercase;
+	font-family: Roboto, sans-serif;
+	transition: background-color,box-shadow .15s ease-in-out;
+}
+
+.btn.disabled,
+.btn.disabled:hover,
+.btn.disabled:focus,
+.btn.disabled:active {
+	color: #FAFAFA;
+	background: #999;
+	box-shadow: none;
+}
+
+.btn:hover,
+.btn:focus {
+	color: #FFF;
+	background: #1E88E5;
+	text-decoration: none;
+	box-shadow: 0 7px 13px 0 rgba(27, 58, 108, 0.11), 0 3px 8px 0 rgba(27, 58, 108, 0.11);
+}
+
+.btn.red { background: #F44336; }
+.btn.red:hover,
+.btn.red:active { background: #E53935; }
+
+.btn.green { background: #4CAF50; }
+.btn.green:hover,
+.btn.green:active { background: #43A047; }
+
+.btn.orange { background: #FF9800; }
+.btn.orange:hover,
+.btn.orange:active { background: #FB8C00; }
+
+.btn.flat {
+	color: #333;
+	font-size: 13px;
+	background: none;
+	box-shadow: none;
+	font-weight: 600;
+	padding: 2px 12px;
+	transition: color .15s;
+	text-transform: uppercase;
+}
+
+.btn.flat:hover {
+	color: #777!important;
+	background: none;
+	box-shadow: none;
+}
+
+.btn.flat.red		{ color: #F44336; }
+.btn.flat.blue		{ color: #2196F3; }
+.btn.flat.green		{ color: #4CAF50; }
+.btn.flat.orange	{ color: #FF9800; }
+
+
+
+/*---------------------------------------------
+	/ App bar
+*/
+.app-bar {
+	z-index: 1;
+	display: flex;
+	flex: 0 0 60px;
+	padding: 0 16px;
+	align-items: center;
+	justify-content: space-between;
+	box-shadow: 0 2px 6px rgba(0,0,0,.2);
+}
+
+.app-bar .logo {
+	height: 25px;
+}
+
+.app-bar button.icon {
+	outline: 0;
+	border: none;
+	padding: 8px;
+	height: 40px;
+	display: flex;
+	cursor: pointer;
+	font-size: 15px;
+	background: none;
+	font-weight: 500;
+	line-height: 24px;
+	align-content: center;
+	font-family: Roboto, sans-serif;
+}
+
+.app-bar button.icon ion-icon {
+	font-size: 24px;
+}
+
+.app-bar button.icon:hover {
+	opacity: 0.5;
+}
+
+
+
+
+/*---------------------------------------------
+	/ Results
+*/
+ul.results {
+	margin: 0;
+	padding: 4px 0 0;
+	font-size: 13px;
+	line-height: 1.6;
+	overflow: auto;
+	background: #FAFAFA;
+}
+
+.results .title {
+	margin: 0;
+	font-size: 14px;
+}
+
+.results .pay {
+	color: #4CAF50;
+	font-weight: 500;
+}
+
+.results li {
+	display: block;
+	cursor: pointer;
+	padding: 10px 15px;
+	border-top: 1px solid rgba(0, 0, 0, 0.1);
+	transition: background .15s ease;
+}
+
+.results li:first-of-type {
+	border-top: none;
+}
+
+.results li:hover {
+	background: rgba(0, 0, 0, 0.05);
+}
+
+.results li > div {
+	display: flex;
+	justify-content: space-between;
+}
+
+.results .company {
+	margin: 0;
+	font-size: 13px;
+	font-weight: 400;
+}
+
+.results .location, .results .term {
+	color: #666;
+}
+
+
+/*---------------------------------------------
+	/ Filter
+*/
+.filter .app-bar {
+	padding-left: 6px;
+	box-shadow: none;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.filter form {
+	overflow: auto;
+	padding-top: 6px;
+}
+
+.filter .material-switch {
+	margin: 10px 15px;
+	display: block;
+}
+
+.filter .section {
+	padding: 10px 15px;
+	position: relative;
+}
+
+.filter .section label, .filter .section h3 {
+	font-weight: 700;
+	color: #444;
+	display: block;
+	margin-bottom: 6px;
+}
+
+.filter .section input, .filter .section select {
+	width: 100%;
+	padding: 8px 10px 6px;
+	font-family: Roboto, sans-serif;
+	border-bottom: 1px solid #666;
+	transition: all .15s;
+}
+
+.filter .section input:focus, .filter .section select:focus,
+.filter .section input:active, .filter .section select:active {
+	border-color: #2196F3;
+	border-width: 2px;
+	margin-bottom: -1px;
+	background: rgba(0, 0, 0, 0.05);
+}
+
+.filter .section .autocomplete {
+	position: absolute;
+	background: #FFF;
+	left: 0;
+	right: 0;
+	top: 65px;
+	z-index: 1;
+	max-height: 0;
+	overflow: hidden;
+	box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14);
+	transition: all .3s;
+	transition-delay: 0.05s; /* Fixes event listener issues */
+}
+
+.filter .section input:focus ~ .autocomplete {
+	visibility: visible;
+	max-height: 250px;
+}
+
+.filter .section .autocomplete li {
+	padding: 12px 16px;
+	cursor: pointer;
+}
+
+.filter .section .autocomplete li:hover {
+	background: #F0F0F0;
+}
+
+.filter .section .selected {
+	margin-top: 10px;
+}
+
+.filter .section .selected span {
+	cursor: pointer;
+	padding: 0 12px;
+	font-size: 13px;
+	font-weight: 500;
+	background: rgba(0, 0, 0, .05);
+	margin: 4px 2px;
+	line-height: 26px;
+	display: inline-block;
+	border-radius: 13px;
+	border: 1px inset rgba(0, 0, 0, 0.1);
+}
+
+.filter .section .selected span:after {
+	width: 16px;
+	vertical-align: sub;
+	height: 16px;
+	margin-left: 3px;
+	margin-right: -6px;
+	display: inline-block;
+	content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M289.94,256l95-95A24,24,0,0,0,351,127l-95,95-95-95A24,24,0,0,0,127,161l95,95-95,95A24,24,0,1,0,161,385l95-95,95,95A24,24,0,0,0,385,351Z"/></svg>');
+}
