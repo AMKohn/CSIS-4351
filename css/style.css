@@ -166,7 +166,8 @@ body {
 }
 
 .app-bar .logo {
-	height: 25px;
+	height: 45px;
+	color: #0082FB;
 }
 
 .app-bar button.icon {
