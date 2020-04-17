@@ -42,9 +42,10 @@ body {
 	bottom: 0;
 	width: 100%;
 	display: flex;
+	overflow: hidden;
+	background: #FFF;
 	flex-flow: column;
 	position: absolute;
-	background: #FFF;
 	transition: left .3s ease;
 }
 
@@ -196,6 +197,311 @@ body {
 
 
 
+
+/*---------------------------------------------
+	/ Nav menu
+*/
+nav.menu {
+	position: fixed;
+	top: 0;
+	left: -185px;
+	bottom: 0;
+	z-index: 9;
+	color: #FFF;
+	background: #1C253D;
+	padding: 50px 0 30px;
+	width: 185px;
+	visibility: hidden;
+	opacity: 0;
+	transition: all 0.3s;
+	box-shadow: 0 2px 6px rgba(0,0,0,.2);
+}
+
+nav.menu.visible {
+	visibility: visible;
+	left: 0;
+	opacity: 1;
+}
+
+nav.menu.visible:after {
+	position: absolute;
+	left: 100%;
+	width: 100vw;
+	top: 0;
+	bottom: 0;
+	content: "";
+	background: rgba(0, 0, 0, 0.3);
+}
+
+nav.menu span {
+	display: block;
+	padding: 14px 24px;
+	font-size: 13px;
+	letter-spacing: .2px;
+	cursor: pointer;
+}
+
+nav.menu span.active {
+	background: #5869F0;
+}
+
+nav.menu span:not(.active):hover {
+	background: rgba(0, 0, 0, 0.3);
+}
+
+
+
+
+
+/*---------------------------------------------
+	/ Form
+*/
+form {
+	overflow: auto;
+	padding-top: 6px;
+}
+
+form .material-switch {
+	margin: 10px 15px;
+	display: block;
+}
+
+form .section {
+	padding: 10px 15px;
+	position: relative;
+}
+
+form .section label, form .section h3 {
+	font-weight: 700;
+	color: #444;
+	display: block;
+	margin-bottom: 6px;
+}
+
+form .section input, form .section select {
+	width: 100%;
+	padding: 8px 10px 6px;
+	font-family: Roboto, sans-serif;
+	border-bottom: 1px solid #666;
+	transition: all .15s;
+}
+
+form .section input:focus, form .section select:focus,
+form .section input:active, form .section select:active {
+	border-color: #2196F3;
+	border-width: 2px;
+	margin-bottom: -1px;
+	background: rgba(0, 0, 0, 0.05);
+}
+
+form .section .autocomplete {
+	position: absolute;
+	background: #FFF;
+	left: 0;
+	right: 0;
+	top: 65px;
+	z-index: 1;
+	max-height: 0;
+	overflow: hidden;
+	box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14);
+	transition: all .3s;
+	transition-delay: 0.075s; /* Fixes event listener issues */
+}
+
+form .section input:focus ~ .autocomplete {
+	visibility: visible;
+	max-height: 250px;
+}
+
+form .section .autocomplete li {
+	padding: 12px 16px;
+	cursor: pointer;
+}
+
+form .section .autocomplete li:hover {
+	background: #F0F0F0;
+}
+
+form .section .selected {
+	margin-top: 10px;
+}
+
+form .section .selected span {
+	cursor: pointer;
+	padding: 0 12px;
+	font-size: 13px;
+	font-weight: 500;
+	background: rgba(0, 0, 0, .05);
+	margin: 4px 2px;
+	line-height: 26px;
+	display: inline-block;
+	border-radius: 13px;
+	border: 1px inset rgba(0, 0, 0, 0.1);
+}
+
+form .section .selected span:after {
+	width: 16px;
+	vertical-align: sub;
+	height: 16px;
+	margin-left: 3px;
+	margin-right: -6px;
+	display: inline-block;
+	content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M289.94,256l95-95A24,24,0,0,0,351,127l-95,95-95-95A24,24,0,0,0,127,161l95,95-95,95A24,24,0,1,0,161,385l95-95,95,95A24,24,0,0,0,385,351Z"/></svg>');
+}
+
+
+
+
+
+/*---------------------------------------------
+	/ Start
+*/
+.screen.start {
+	background: #FAFAFA;
+	display: flex;
+	padding: 15% 25px 0;
+}
+
+.start h1 {
+	font-size: 40px;
+	font-weight: 500;
+}
+
+.start p {
+	margin: 15px 0 40px;
+	text-align: left;
+	line-height: 1.7;
+}
+
+.start .btn {
+	margin: 0 0 15px;
+	font-size: 16px;
+	padding: 18px 30px;
+	font-weight: 700;
+}
+
+
+
+
+
+
+
+/*---------------------------------------------
+	/ Welcome
+*/
+.screen.welcome .logo {
+	color: #0082FB;
+	color: #FFF;
+	width: 75%;
+	margin: 0 auto;
+	flex: 1;
+}
+
+.screen.welcome {
+	background: #0030df;
+	color: #FFF;
+	display: flex;
+	padding: 0 25px;
+}
+
+.welcome h1 {
+	font-size: 40px;
+	font-weight: 500;
+}
+
+.welcome p {
+	margin: 20px 0 45px;
+	text-align: left;
+	line-height: 1.7;
+	color: rgba(255, 255, 255, 0.75);
+}
+
+.welcome .btn {
+	background: #FFF;
+	color: #212121;
+	margin: 0 0 35px;
+	font-size: 16px;
+	padding: 18px 30px;
+	font-weight: 700;
+}
+
+.welcome .btn:hover, .welcome .btn:active {
+	background: #F5F5F5;
+}
+
+
+
+
+
+/*---------------------------------------------
+	/ Onboarding
+*/
+.onboarding .app-bar {
+	color: #FFF;
+	padding: 0 4px;
+	background: #0030df;
+}
+
+.onboarding .app-bar h1 {
+	font-size: 20px;
+	font-weight: 500;
+}
+
+.onboarding .app-bar button {
+	color: inherit;
+}
+
+.onboarding .app-bar button.icon:hover {
+	opacity: 0.85;
+}
+
+.onboarding .app-bar button ion-icon {
+	filter: invert(1);
+}
+
+.onboarding form {
+	flex: 1;
+}
+
+.onboarding .gpa .why {
+	float: right;
+	color: #2196F3;
+	font-size: 13px;
+	cursor: pointer;
+}
+
+
+.onboarding p.progress {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	padding-bottom: 8px;
+	text-align: center;
+	line-height: 24px;
+	background: rgba(255, 255, 255, 0.75);
+}
+
+.onboarding p.progress:after {
+	content: "";
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	left: 0;
+	height: 6px;
+	border-left: solid #39F;
+	border-left-width: 25vw;
+	background: #BBB;
+}
+
+.onboarding-2 p.progress:after { border-left-width: 50vw; }
+.onboarding-3 p.progress:after { border-left-width: 75vw; }
+.onboarding-4 p.progress:after { border-left-width: 100vw; }
+
+
+
+
+
 /*---------------------------------------------
 	/ Results
 */
@@ -257,97 +563,4 @@ ul.results {
 	padding-left: 6px;
 	box-shadow: none;
 	border-bottom: 1px solid rgba(0, 0, 0, 0.15);
-}
-
-.filter form {
-	overflow: auto;
-	padding-top: 6px;
-}
-
-.filter .material-switch {
-	margin: 10px 15px;
-	display: block;
-}
-
-.filter .section {
-	padding: 10px 15px;
-	position: relative;
-}
-
-.filter .section label, .filter .section h3 {
-	font-weight: 700;
-	color: #444;
-	display: block;
-	margin-bottom: 6px;
-}
-
-.filter .section input, .filter .section select {
-	width: 100%;
-	padding: 8px 10px 6px;
-	font-family: Roboto, sans-serif;
-	border-bottom: 1px solid #666;
-	transition: all .15s;
-}
-
-.filter .section input:focus, .filter .section select:focus,
-.filter .section input:active, .filter .section select:active {
-	border-color: #2196F3;
-	border-width: 2px;
-	margin-bottom: -1px;
-	background: rgba(0, 0, 0, 0.05);
-}
-
-.filter .section .autocomplete {
-	position: absolute;
-	background: #FFF;
-	left: 0;
-	right: 0;
-	top: 65px;
-	z-index: 1;
-	max-height: 0;
-	overflow: hidden;
-	box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14);
-	transition: all .3s;
-	transition-delay: 0.05s; /* Fixes event listener issues */
-}
-
-.filter .section input:focus ~ .autocomplete {
-	visibility: visible;
-	max-height: 250px;
-}
-
-.filter .section .autocomplete li {
-	padding: 12px 16px;
-	cursor: pointer;
-}
-
-.filter .section .autocomplete li:hover {
-	background: #F0F0F0;
-}
-
-.filter .section .selected {
-	margin-top: 10px;
-}
-
-.filter .section .selected span {
-	cursor: pointer;
-	padding: 0 12px;
-	font-size: 13px;
-	font-weight: 500;
-	background: rgba(0, 0, 0, .05);
-	margin: 4px 2px;
-	line-height: 26px;
-	display: inline-block;
-	border-radius: 13px;
-	border: 1px inset rgba(0, 0, 0, 0.1);
-}
-
-.filter .section .selected span:after {
-	width: 16px;
-	vertical-align: sub;
-	height: 16px;
-	margin-left: 3px;
-	margin-right: -6px;
-	display: inline-block;
-	content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M289.94,256l95-95A24,24,0,0,0,351,127l-95,95-95-95A24,24,0,0,0,127,161l95,95-95,95A24,24,0,1,0,161,385l95-95,95,95A24,24,0,0,0,385,351Z"/></svg>');
 }

@@ -10,335 +10,554 @@
 		<script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
 
 		<link href="css/style.css" rel="stylesheet" type="text/css" />
- 	</head>
+	</head>
 
 	<body>
-        <div class="screen-container">
-            <div class="screen search-results visible">
-                <header class="app-bar">
-                    <button type="button" class="icon menu"><ion-icon name="menu"></ion-icon></button>
+		<div class="screen-container">
+			<div class="screen start visible">
+				<h1>CSIS 4351</h1>
 
-                    <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                        <path d="M256,256s-48-96-126-96c-54.12,0-98,43-98,96s43.88,96,98,96c30,0,56.45-13.18,78-32" style="fill:none;stroke:currentColor;stroke-linecap:round;stroke-miterlimit:10;stroke-width:48px"/>
-                        <path d="M256,256s48,96,126,96c54.12,0,98-43,98-96s-43.88-96-98-96c-29.37,0-56.66,13.75-78,32" style="fill:none;stroke:currentColor;stroke-linecap:round;stroke-miterlimit:10;stroke-width:48px"/>
-                    </svg>
+				<p>Interactive prototype</p>
 
-                    <button type="button" class="icon filter" onclick="showScreen('filter')"><ion-icon name="filter"></ion-icon></button>
-                </header>
+				<p>Avi Kohn<br>Khalad Mahabub<br>Abdul Sarker</p>
 
-                <ul class="results">
-                    <li>
-                        <div>
-                            <h2 class="title">Backend Node.js Development</h2>
-                            <span class="pay">$15/hr</span>
-                        </div>
+				<p>Please select a starting point</p>
 
-                        <div>
-                            <h3 class="company">MegaBig Corp</h3>
-                            <span class="industry">Cybersecurity</span>
-                        </div>
+				<button type="button" class="btn blue" onclick="showScreen('welcome')">First run</button>
 
-                        <div>
-                            <span class="location">Sunrise, FL</span>
-                            <span class="term">Summer 2021</span>
-                        </div>
-                    </li>
+				<button type="button" class="btn blue" onclick="showScreen('search-results')">Home screen</button>
+			</div>
 
-                    <li>
-                        <div>
-                            <h2 class="title">Backend Node.js Development</h2>
-                            <span class="pay">$15/hr</span>
-                        </div>
+			<div class="screen welcome">
+				<svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+					<path d="M256,256s-48-96-126-96c-54.12,0-98,43-98,96s43.88,96,98,96c30,0,56.45-13.18,78-32" style="fill:none;stroke:currentColor;stroke-linecap:round;stroke-miterlimit:10;stroke-width:48px"/>
+					<path d="M256,256s48,96,126,96c54.12,0,98-43,98-96s-43.88-96-98-96c-29.37,0-56.66,13.75-78,32" style="fill:none;stroke:currentColor;stroke-linecap:round;stroke-miterlimit:10;stroke-width:48px"/>
+				</svg>
 
-                        <div>
-                            <h3 class="company">MegaBig Corp</h3>
-                            <span class="industry">Cybersecurity</span>
-                        </div>
+				<h1>Welcome!</h1>
 
-                        <div>
-                            <span class="location">Sunrise, FL</span>
-                            <span class="term">Summer 2021</span>
-                        </div>
-                    </li>
+				<p>Enter your information on the next screens and we'll help find the best internship for you</p>
 
-                    <li>
-                        <div>
-                            <h2 class="title">Backend Node.js Development</h2>
-                            <span class="pay">$15/hr</span>
-                        </div>
+				<button type="button" class="btn blue next" onclick="showScreen('onboarding-1')">Get Started</button>
+			</div>
 
-                        <div>
-                            <h3 class="company">MegaBig Corp</h3>
-                            <span class="industry">Cybersecurity</span>
-                        </div>
+			<div class="screen onboarding onboarding-1">
+				<header class="app-bar">
+					<button type="button" class="icon prev" onclick="showScreen('welcome')"><ion-icon name="chevron-back"></ion-icon> Prev</button>
 
-                        <div>
-                            <span class="location">Sunrise, FL</span>
-                            <span class="term">Summer 2021</span>
-                        </div>
-                    </li>
+					<h1>Academics</h1>
 
-                    <li>
-                        <div>
-                            <h2 class="title">Backend Node.js Development</h2>
-                            <span class="pay">$15/hr</span>
-                        </div>
+					<button type="button" class="icon next" onclick="showScreen('onboarding-2')">Next <ion-icon name="chevron-forward"></ion-icon></button>
+				</header>
 
-                        <div>
-                            <h3 class="company">MegaBig Corp</h3>
-                            <span class="industry">Cybersecurity</span>
-                        </div>
+				<form class="academics" autocomplete="off">
+					<div class="section program">
+						<label for="program">Program</label>
 
-                        <div>
-                            <span class="location">Sunrise, FL</span>
-                            <span class="term">Summer 2021</span>
-                        </div>
-                    </li>
-
-                    <li>
-                        <div>
-                            <h2 class="title">Backend Node.js Development</h2>
-                            <span class="pay">$15/hr</span>
-                        </div>
-
-                        <div>
-                            <h3 class="company">MegaBig Corp</h3>
-                            <span class="industry">Cybersecurity</span>
-                        </div>
-
-                        <div>
-                            <span class="location">Sunrise, FL</span>
-                            <span class="term">Summer 2021</span>
-                        </div>
-                    </li>
-
-                    <li>
-                        <div>
-                            <h2 class="title">Backend Node.js Development</h2>
-                            <span class="pay">$15/hr</span>
-                        </div>
-
-                        <div>
-                            <h3 class="company">MegaBig Corp</h3>
-                            <span class="industry">Cybersecurity</span>
-                        </div>
-
-                        <div>
-                            <span class="location">Sunrise, FL</span>
-                            <span class="term">Summer 2021</span>
-                        </div>
-                    </li>
-
-                    <li>
-                        <div>
-                            <h2 class="title">Backend Node.js Development</h2>
-                            <span class="pay">$15/hr</span>
-                        </div>
-
-                        <div>
-                            <h3 class="company">MegaBig Corp</h3>
-                            <span class="industry">Cybersecurity</span>
-                        </div>
-
-                        <div>
-                            <span class="location">Sunrise, FL</span>
-                            <span class="term">Summer 2021</span>
-                        </div>
-                    </li>
-
-                    <li>
-                        <div>
-                            <h2 class="title">Backend Node.js Development</h2>
-                            <span class="pay">$15/hr</span>
-                        </div>
-
-                        <div>
-                            <h3 class="company">MegaBig Corp</h3>
-                            <span class="industry">Cybersecurity</span>
-                        </div>
-
-                        <div>
-                            <span class="location">Sunrise, FL</span>
-                            <span class="term">Summer 2021</span>
-                        </div>
-                    </li>
-
-                    <li>
-                        <div>
-                            <h2 class="title">Backend Node.js Development</h2>
-                            <span class="pay">$15/hr</span>
-                        </div>
-
-                        <div>
-                            <h3 class="company">MegaBig Corp</h3>
-                            <span class="industry">Cybersecurity</span>
-                        </div>
-
-                        <div>
-                            <span class="location">Sunrise, FL</span>
-                            <span class="term">Summer 2021</span>
-                        </div>
-                    </li>
-
-                    <li>
-                        <div>
-                            <h2 class="title">Backend Node.js Development</h2>
-                            <span class="pay">$15/hr</span>
-                        </div>
-
-                        <div>
-                            <h3 class="company">MegaBig Corp</h3>
-                            <span class="industry">Cybersecurity</span>
-                        </div>
-
-                        <div>
-                            <span class="location">Sunrise, FL</span>
-                            <span class="term">Summer 2021</span>
-                        </div>
-                    </li>
-
-                    <li>
-                        <div>
-                            <h2 class="title">Backend Node.js Development</h2>
-                            <span class="pay">$15/hr</span>
-                        </div>
-
-                        <div>
-                            <h3 class="company">MegaBig Corp</h3>
-                            <span class="industry">Cybersecurity</span>
-                        </div>
-
-                        <div>
-                            <span class="location">Sunrise, FL</span>
-                            <span class="term">Summer 2021</span>
-                        </div>
-                    </li>
-
-                    <li>
-                        <div>
-                            <h2 class="title">Backend Node.js Development</h2>
-                            <span class="pay">$15/hr</span>
-                        </div>
-
-                        <div>
-                            <h3 class="company">MegaBig Corp</h3>
-                            <span class="industry">Cybersecurity</span>
-                        </div>
-
-                        <div>
-                            <span class="location">Sunrise, FL</span>
-                            <span class="term">Summer 2021</span>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="screen filter">
-						<header class="app-bar">
-							<button type="button" class="icon back" onclick="showScreen('search-results')"><ion-icon name="chevron-back-outline"></ion-icon> Back</button>
-
-							<button type="button" class="btn flat blue" onclick="showScreen('search-results')">Update Results</button>
-						</header>
-
-						<form class="filters" autocomplete="off">
-							<div class="section function">
-								<label for="function">Job Function</label>
-
-								<input type="text" id="function" placeholder="Start typing..." />
-
-								<ul class="autocomplete">
-									<li>Frontend development</li>
-									<li>Backend web development</li>
-									<li>Embedded</li>
-									<li>Data Analysis</li>
-									<li>IT Support</li>
-								</ul>
-
-								<div class="selected">
-									<span class="selected-chip">Backend web development</span>
-									<span class="selected-chip">Embedded</span>
-									<span class="selected-chip">Data Analysis</span>
-									<span class="selected-chip">IT Support</span>
-								</div>
-							</div>
-
-							<div class="section location">
-								<label for="location">Location</label>
-
-								<input type="text" id="location" placeholder="City, State, or Zip" />
-
-								<ul class="autocomplete">
-									<li>Hollywood, FL</li>
-									<li>Fort Lauderdale, FL</li>
-									<li>Miami, FL</li>
-									<li>Boca Raton, FL</li>
-									<li>Orlando, FL</li>
-								</ul>
-
-								<div class="selected">
-									<span class="selected-chip">Dallas, TX</span>
-									<span class="selected-chip">Fort Lauderdale, FL</span>
-								</div>
-							</div>
-
-							<div class="section commute">
-								<label for="commute">Maximum Commute</label>
-
-								<select id="commute">
-									<option>5 minutes</option>
-									<option>15 minutes</option>
-									<option>30 minutes</option>
-									<option>45 minutes</option>
-									<option>1 hour</option>
-									<option>1.5 hours</option>
-									<option>3 hours</option>
-								</select>
-							</div>
-
-							<div class="section term">
-								<label for="term">Internship Term</label>
-
-								<select id="term" onchange="addSelectChip(this)">
-									<option selected disabled hidden value="initial">Select one to add</option>
-									<option>Summer 2021</option>
-									<option>Fall 2021</option>
-									<option>Spring 2022</option>
-									<option>Summer 2022</option>
-								</select>
-
-								<div class="selected">
-									<span class="selected-chip">Summer 2020</span>
-									<span class="selected-chip">Fall 2020</span>
-								</div>
-							</div>
-
-							<label class="credit material-switch">
-								<input type="checkbox" />
-								<span>Limit to academic credit offered</span>
-							</label>
-
-							<div class="section company-size">
-								<label for="company-size">Company Size</label>
-
-								<select id="company-size" onchange="addSelectChip(this)">
-									<option selected disabled hidden value="initial">Select one to add</option>
-									<option>1 - 5 employees</option>
-									<option>5 - 15 employees</option>
-									<option>15 - 30 employees</option>
-									<option>30 - 50 employees</option>
-									<option>50 - 250 employees</option>
-									<option>250 - 500 employees</option>
-									<option>500+ employees</option>
-								</select>
-
-								<div class="selected">
-									<span class="selected-chip">1 - 5 employees</span>
-									<span class="selected-chip">5 - 15 employees</span>
-								</div>
-							</div>
-						</form>
+						<select id="program">
+							<option>Undergraduate - Associate</option>
+							<option>Undergraduate - Bachelor</option>
+							<option>Graduate - Masters</option>
+							<option>Graduate - PhD</option>
+						</select>
 					</div>
-        </div>
+
+					<div class="section year">
+						<label for="year">Current Year</label>
+
+						<select id="year">
+							<option>Freshman</option>
+							<option>Sophomore</option>
+							<option>Junior</option>
+							<option>Senior</option>
+						</select>
+					</div>
+
+					<div class="section fields">
+						<label for="fields">Field(s) of Study</label>
+
+						<input type="text" id="fields" placeholder="Start typing..." />
+
+						<ul class="autocomplete">
+							<li>Computer Science</li>
+							<li>Information Technology</li>
+							<li>Data Science</li>
+							<li>Mathematics</li>
+							<li>Business</li>
+						</ul>
+
+						<div class="selected">
+							<span class="selected-chip">Computer Science</span>
+						</div>
+					</div>
+
+					<div class="section gpa">
+						<span class="why">Why?</span>
+
+						<label for="gpa">GPA</label>
+
+						<input type="text" id="gpa" placeholder="Enter your GPA on a 4.0 scale" />
+					</div>
+				</form>
+
+				<p class="progress">1 of 4</p>
+			</div>
+
+			<div class="screen onboarding onboarding-2">
+				<header class="app-bar">
+					<button type="button" class="icon prev" onclick="showScreen('onboarding-1')"><ion-icon name="chevron-back-outline"></ion-icon> Prev</button>
+
+					<h1>Requirements</h1>
+
+					<button type="button" class="icon next" onclick="showScreen('onboarding-3')">Next <ion-icon name="chevron-forward-outline"></ion-icon></button>
+				</header>
+
+				<form class="requirements" autocomplete="off">
+					<div class="section location">
+						<label for="ob-location">Location</label>
+
+						<input type="text" id="ob-location" placeholder="City, State, or Zip" />
+
+						<ul class="autocomplete">
+							<li>Hollywood, FL</li>
+							<li>Fort Lauderdale, FL</li>
+							<li>Miami, FL</li>
+							<li>Boca Raton, FL</li>
+							<li>Orlando, FL</li>
+						</ul>
+
+						<div class="selected">
+							<span class="selected-chip">Dallas, TX</span>
+							<span class="selected-chip">Fort Lauderdale, FL</span>
+						</div>
+					</div>
+
+					<div class="section commute">
+						<label for="ob-commute">Maximum Commute</label>
+
+						<select id="ob-commute">
+							<option>5 minutes</option>
+							<option>15 minutes</option>
+							<option>30 minutes</option>
+							<option>45 minutes</option>
+							<option>1 hour</option>
+							<option>1.5 hours</option>
+							<option>3 hours</option>
+						</select>
+					</div>
+
+					<div class="section min-pay">
+						<label for="min-pay">Minimum Pay</label>
+
+						<select id="min-pay">
+							<option>Unpaid</option>
+							<option>Contract</option>
+							<option>$10/hour</option>
+							<option>$15/hour</option>
+							<option>$20/hour</option>
+							<option>$30/hour</option>
+							<option>$40/hour</option>
+						</select>
+					</div>
+
+					<div class="section term">
+						<label for="ob-term">Internship Term</label>
+
+						<select id="ob-term" onchange="addSelectChip(this)">
+							<option selected disabled hidden value="initial">Select one to add</option>
+							<option>Summer 2021</option>
+							<option>Fall 2021</option>
+							<option>Spring 2022</option>
+							<option>Summer 2022</option>
+						</select>
+
+						<div class="selected">
+							<span class="selected-chip">Summer 2020</span>
+							<span class="selected-chip">Fall 2020</span>
+						</div>
+					</div>
+
+					<label class="credit material-switch">
+						<input type="checkbox" />
+						<span>Must be willing to offer academic credit</span>
+					</label>
+
+					<label class="sponsor material-switch">
+						<input type="checkbox" />
+						<span>Must be willing to sponsor</span>
+					</label>
+				</form>
+
+				<p class="progress">2 of 4</p>
+			</div>
+
+			<div class="screen onboarding onboarding-3">
+				<header class="app-bar">
+					<button type="button" class="icon prev" onclick="showScreen('onboarding-2')"><ion-icon name="chevron-back-outline"></ion-icon> Prev</button>
+
+					<h1>Job Functions</h1>
+
+					<button type="button" class="icon next" onclick="showScreen('onboarding-4')">Next <ion-icon name="chevron-forward-outline"></ion-icon></button>
+				</header>
+
+				<p>Select what you'd like to be doing in an internship</p>
+
+				<p class="progress">3 of 4</p>
+			</div>
+
+			<div class="screen onboarding onboarding-4">
+				<header class="app-bar">
+					<button type="button" class="icon prev" onclick="showScreen('onboarding-3')"><ion-icon name="chevron-back-outline"></ion-icon> Prev</button>
+
+					<h1>Company Industries</h1>
+
+					<button type="button" class="icon next" onclick="showScreen('search-results')">Next <ion-icon name="chevron-forward-outline"></ion-icon></button>
+				</header>
+
+				<p>Select the industries you'd like to work in</p>
+
+				<p class="progress">4 of 4</p>
+			</div>
+
+			<div class="screen search-results">
+				<nav class="menu" id="nav-menu" onclick="this.classList.remove('visible')">
+					<span class="active">Search results</span>
+					<span>Applications</span>
+					<span>My profile</span>
+					<span>Settings</span>
+					<span>Help</span>
+				</nav>
+
+				<header class="app-bar">
+					<button type="button" class="icon menu" onclick="document.getElementById('nav-menu').classList.add('visible')"><ion-icon name="menu"></ion-icon></button>
+
+					<svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+						<path d="M256,256s-48-96-126-96c-54.12,0-98,43-98,96s43.88,96,98,96c30,0,56.45-13.18,78-32" style="fill:none;stroke:currentColor;stroke-linecap:round;stroke-miterlimit:10;stroke-width:48px"/>
+						<path d="M256,256s48,96,126,96c54.12,0,98-43,98-96s-43.88-96-98-96c-29.37,0-56.66,13.75-78,32" style="fill:none;stroke:currentColor;stroke-linecap:round;stroke-miterlimit:10;stroke-width:48px"/>
+					</svg>
+
+					<button type="button" class="icon filter" onclick="showScreen('filter')"><ion-icon name="filter"></ion-icon></button>
+				</header>
+
+				<ul class="results">
+					<li>
+						<div>
+							<h2 class="title">Backend Node.js Development</h2>
+							<span class="pay">$15/hr</span>
+						</div>
+
+						<div>
+							<h3 class="company">MegaBig Corp</h3>
+							<span class="industry">Cybersecurity</span>
+						</div>
+
+						<div>
+							<span class="location">Sunrise, FL</span>
+							<span class="term">Summer 2021</span>
+						</div>
+					</li>
+
+					<li>
+						<div>
+							<h2 class="title">Backend Node.js Development</h2>
+							<span class="pay">$15/hr</span>
+						</div>
+
+						<div>
+							<h3 class="company">MegaBig Corp</h3>
+							<span class="industry">Cybersecurity</span>
+						</div>
+
+						<div>
+							<span class="location">Sunrise, FL</span>
+							<span class="term">Summer 2021</span>
+						</div>
+					</li>
+
+					<li>
+						<div>
+							<h2 class="title">Backend Node.js Development</h2>
+							<span class="pay">$15/hr</span>
+						</div>
+
+						<div>
+							<h3 class="company">MegaBig Corp</h3>
+							<span class="industry">Cybersecurity</span>
+						</div>
+
+						<div>
+							<span class="location">Sunrise, FL</span>
+							<span class="term">Summer 2021</span>
+						</div>
+					</li>
+
+					<li>
+						<div>
+							<h2 class="title">Backend Node.js Development</h2>
+							<span class="pay">$15/hr</span>
+						</div>
+
+						<div>
+							<h3 class="company">MegaBig Corp</h3>
+							<span class="industry">Cybersecurity</span>
+						</div>
+
+						<div>
+							<span class="location">Sunrise, FL</span>
+							<span class="term">Summer 2021</span>
+						</div>
+					</li>
+
+					<li>
+						<div>
+							<h2 class="title">Backend Node.js Development</h2>
+							<span class="pay">$15/hr</span>
+						</div>
+
+						<div>
+							<h3 class="company">MegaBig Corp</h3>
+							<span class="industry">Cybersecurity</span>
+						</div>
+
+						<div>
+							<span class="location">Sunrise, FL</span>
+							<span class="term">Summer 2021</span>
+						</div>
+					</li>
+
+					<li>
+						<div>
+							<h2 class="title">Backend Node.js Development</h2>
+							<span class="pay">$15/hr</span>
+						</div>
+
+						<div>
+							<h3 class="company">MegaBig Corp</h3>
+							<span class="industry">Cybersecurity</span>
+						</div>
+
+						<div>
+							<span class="location">Sunrise, FL</span>
+							<span class="term">Summer 2021</span>
+						</div>
+					</li>
+
+					<li>
+						<div>
+							<h2 class="title">Backend Node.js Development</h2>
+							<span class="pay">$15/hr</span>
+						</div>
+
+						<div>
+							<h3 class="company">MegaBig Corp</h3>
+							<span class="industry">Cybersecurity</span>
+						</div>
+
+						<div>
+							<span class="location">Sunrise, FL</span>
+							<span class="term">Summer 2021</span>
+						</div>
+					</li>
+
+					<li>
+						<div>
+							<h2 class="title">Backend Node.js Development</h2>
+							<span class="pay">$15/hr</span>
+						</div>
+
+						<div>
+							<h3 class="company">MegaBig Corp</h3>
+							<span class="industry">Cybersecurity</span>
+						</div>
+
+						<div>
+							<span class="location">Sunrise, FL</span>
+							<span class="term">Summer 2021</span>
+						</div>
+					</li>
+
+					<li>
+						<div>
+							<h2 class="title">Backend Node.js Development</h2>
+							<span class="pay">$15/hr</span>
+						</div>
+
+						<div>
+							<h3 class="company">MegaBig Corp</h3>
+							<span class="industry">Cybersecurity</span>
+						</div>
+
+						<div>
+							<span class="location">Sunrise, FL</span>
+							<span class="term">Summer 2021</span>
+						</div>
+					</li>
+
+					<li>
+						<div>
+							<h2 class="title">Backend Node.js Development</h2>
+							<span class="pay">$15/hr</span>
+						</div>
+
+						<div>
+							<h3 class="company">MegaBig Corp</h3>
+							<span class="industry">Cybersecurity</span>
+						</div>
+
+						<div>
+							<span class="location">Sunrise, FL</span>
+							<span class="term">Summer 2021</span>
+						</div>
+					</li>
+
+					<li>
+						<div>
+							<h2 class="title">Backend Node.js Development</h2>
+							<span class="pay">$15/hr</span>
+						</div>
+
+						<div>
+							<h3 class="company">MegaBig Corp</h3>
+							<span class="industry">Cybersecurity</span>
+						</div>
+
+						<div>
+							<span class="location">Sunrise, FL</span>
+							<span class="term">Summer 2021</span>
+						</div>
+					</li>
+
+					<li>
+						<div>
+							<h2 class="title">Backend Node.js Development</h2>
+							<span class="pay">$15/hr</span>
+						</div>
+
+						<div>
+							<h3 class="company">MegaBig Corp</h3>
+							<span class="industry">Cybersecurity</span>
+						</div>
+
+						<div>
+							<span class="location">Sunrise, FL</span>
+							<span class="term">Summer 2021</span>
+						</div>
+					</li>
+				</ul>
+			</div>
+
+			<div class="screen filter">
+				<header class="app-bar">
+					<button type="button" class="icon back" onclick="showScreen('search-results')"><ion-icon name="chevron-back-outline"></ion-icon> Back</button>
+
+					<button type="button" class="btn flat blue" onclick="showScreen('search-results')">Update Results</button>
+				</header>
+
+				<form class="filters" autocomplete="off">
+					<div class="section keywords">
+						<label for="keywords">Keywords</label>
+
+						<input type="text" id="keywords" placeholder="Enter keywords to filter by" />
+					</div>
+
+					<div class="section function">
+						<label for="function">Job Function</label>
+
+						<input type="text" id="function" placeholder="Start typing..." />
+
+						<ul class="autocomplete">
+							<li>Frontend development</li>
+							<li>Backend web development</li>
+							<li>Embedded</li>
+							<li>Data Analysis</li>
+							<li>IT Support</li>
+						</ul>
+
+						<div class="selected">
+							<span class="selected-chip">Backend web development</span>
+							<span class="selected-chip">Embedded</span>
+							<span class="selected-chip">Data Analysis</span>
+							<span class="selected-chip">IT Support</span>
+						</div>
+					</div>
+
+					<div class="section location">
+						<label for="location">Location</label>
+
+						<input type="text" id="location" placeholder="City, State, or Zip" />
+
+						<ul class="autocomplete">
+							<li>Hollywood, FL</li>
+							<li>Fort Lauderdale, FL</li>
+							<li>Miami, FL</li>
+							<li>Boca Raton, FL</li>
+							<li>Orlando, FL</li>
+						</ul>
+
+						<div class="selected">
+							<span class="selected-chip">Dallas, TX</span>
+							<span class="selected-chip">Fort Lauderdale, FL</span>
+						</div>
+					</div>
+
+					<div class="section commute">
+						<label for="commute">Maximum Commute</label>
+
+						<select id="commute">
+							<option>5 minutes</option>
+							<option>15 minutes</option>
+							<option>30 minutes</option>
+							<option>45 minutes</option>
+							<option>1 hour</option>
+							<option>1.5 hours</option>
+							<option>3 hours</option>
+						</select>
+					</div>
+
+					<div class="section term">
+						<label for="term">Internship Term</label>
+
+						<select id="term" onchange="addSelectChip(this)">
+							<option selected disabled hidden value="initial">Select one to add</option>
+							<option>Summer 2021</option>
+							<option>Fall 2021</option>
+							<option>Spring 2022</option>
+							<option>Summer 2022</option>
+						</select>
+
+						<div class="selected">
+							<span class="selected-chip">Summer 2020</span>
+							<span class="selected-chip">Fall 2020</span>
+						</div>
+					</div>
+
+					<label class="credit material-switch">
+						<input type="checkbox" />
+						<span>Limit to academic credit offered</span>
+					</label>
+
+					<div class="section company-size">
+						<label for="company-size">Company Size</label>
+
+						<select id="company-size" onchange="addSelectChip(this)">
+							<option selected disabled hidden value="initial">Select one to add</option>
+							<option>1 - 5 employees</option>
+							<option>5 - 15 employees</option>
+							<option>15 - 30 employees</option>
+							<option>30 - 50 employees</option>
+							<option>50 - 250 employees</option>
+							<option>250 - 500 employees</option>
+							<option>500+ employees</option>
+						</select>
+
+						<div class="selected">
+							<span class="selected-chip">1 - 5 employees</span>
+							<span class="selected-chip">5 - 15 employees</span>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
 
 		<script>
 			function showScreen(name) {
@@ -354,7 +573,7 @@
 			}
 
 			// This handling is very structure dependent, but this is just a prototype
-			document.querySelector(".screen.filter").addEventListener("click", e => {
+			[].forEach.call(document.querySelectorAll("form"), f => f.addEventListener("click", e => {
 				if (!(e.target instanceof HTMLElement)) {
 					return;
 				}
@@ -366,7 +585,7 @@
 				if (e.target.tagName === "LI" && e.target.parentElement.classList.contains("autocomplete")) {
 					e.target.parentElement.parentElement.querySelector(".selected").innerHTML += `<span class="selected-chip">${e.target.innerText.trim()}</span>`;
 				}
-			});
+			}));
 		</script>
- 	</body>
+	</body>
 </html>
