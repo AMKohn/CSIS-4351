@@ -626,6 +626,259 @@ ul.results {
 }
 
 
+
+
+
+/*---------------------------------------------
+	/ Internship Details
+*/
+.details .app-bar .back {
+	margin-left: -8px;
+}
+
+.details .app-bar .save.saved {
+	color: #D81B60;
+}
+
+.details .app-bar button.icon.save {
+	position: relative;
+	opacity: 1;
+}
+
+button.icon.save:after {
+	color: #D81B60;
+	content: "Unsaved";
+	position: absolute;
+	top: calc(100% - 13px);
+	width: 60px;
+	left: -10px;
+	text-align: center;
+	font-weight: 400;
+	font-size: 12px;
+	pointer-events: none;
+	animation: unsave-toast 1.5s forwards; /* This actually plays on load, but the screen is hidden */
+}
+
+button.icon.save.saved:after {
+	content: "Saved";
+	animation: save-toast 1.5s forwards;
+}
+
+@keyframes save-toast {
+	0%, 50% {
+		opacity: 1;
+		top: calc(100% - 14px);
+	}
+
+	100% {
+		opacity: 0;
+		top: 100%;
+	}
+}
+
+/* Copied to force animation replay */
+@keyframes unsave-toast {
+	0%, 50% {
+		opacity: 1;
+		top: calc(100% - 14px);
+	}
+
+	100% {
+		opacity: 0;
+		top: 100%;
+	}
+}
+
+.details .tabs {
+	display: inline-flex;
+	text-align: center;
+	/* background: #F5F5F5; */
+	overflow: hidden;
+	border-radius: 20px;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.details .tabs span {
+	flex: 1;
+	padding: 8px 16px;
+	text-transform: uppercase;
+	font-weight: 500;
+	font-size: 13px;
+	cursor: pointer;
+	border-radius: inherit;
+}
+
+.details:not(.company-visible) .tabs span.internship,
+.details.company-visible .tabs span.company {
+	--color: 30, 136, 229;
+	color: rgb(var(--color));
+	background: rgba(var(--color), 0.15);
+}
+
+.details .tabs span:hover,
+.details .tabs span:active {
+	background: rgba(0, 0, 0, 0.05);
+}
+
+.details main {
+	flex: 1 1 100%;
+	overflow: hidden;
+	position: relative;
+}
+
+.details main > div {
+	padding: 15px;
+	overflow: auto;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 100%;
+	transition: all 0.3s ease;
+}
+
+.details main > .internship {
+	right: 0;
+}
+
+.details main > .company {
+	left: 100%;
+}
+
+.details.company-visible main > .company {
+	left: 0;
+}
+
+.details.company-visible main > .internship {
+	right: 100%;
+}
+
+.details .title {
+	font-size: 20px;
+	font-weight: 500;
+	line-height: 1.4;
+}
+
+.details .location {
+	color: #666;
+	font-weight: 400;
+	font-size: 14px;
+}
+
+.details .subtitle {
+	line-height: 1.6;
+	margin: 12px 0;
+}
+
+.details .subtitle {
+	line-height: 1.6;
+	/* font-size: 14px; */
+}
+
+.details .tags {
+	margin: 16px 0;
+	display: flex;
+	justify-content: space-around;
+}
+
+.details .tags span {
+	--color: 34, 34, 34;
+	padding: 8px 16px;
+	border-radius: 4px;
+	font-weight: 500;
+	color: rgb(var(--color));
+	background: rgba(var(--color), 0.15);
+}
+
+.details .tags .pay {
+	--color: 67, 160, 71;
+}
+
+.details .tags .type {
+	--color: 30, 136, 229;
+}
+
+.details .tags .duration {
+	--color: 94, 53, 177;
+}
+
+
+.details dl.specs {
+	background: #F5F5F5;
+	margin: 0 -15px;
+	padding: 10px 20px;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+	line-height: 1.7;
+}
+
+.details .specs dt {
+	flex: 1 1 50%;
+	font-weight: 500;
+}
+
+.details .specs dd {
+	flex: 1 1 50%;
+	text-align: right;
+}
+
+.details .specs > div {
+	flex: 1 0 100%;
+	display: inherit;
+	flex-flow: inherit;
+	overflow: hidden;
+	max-height: 95px;
+	transition: max-height .3s ease;
+}
+
+.details .specs > div.hidden {
+	max-height: 18px;
+}
+
+.details .specs button {
+	flex: 1 0 100%;
+	height: 24px;
+	font-size: 24px;
+	margin: -2px 0;
+}
+
+.details .pictures {
+	margin: 0 -15px;
+	display: flex;
+	flex-flow: row;
+	overflow: auto;
+	height: 150px;
+	border: solid rgba(0, 0, 0, 0.2);
+	border-width: 1px 0;
+}
+
+.details .pictures::-webkit-scrollbar {
+	height: 0;
+}
+
+.details .pictures img {
+	height: 100%;
+	margin-right: 2px;
+}
+
+.details .description {
+	margin: 15px 5px;
+	line-height: 1.6;
+}
+
+.details .description p {
+	margin-bottom: 10px;
+}
+
+.details button.apply {
+	border-radius: 0;
+	padding: 20px 30px;
+	font-size: 16px;
+	box-shadow: 0 -1px 3px rgba(0,0,0,.15);
+}
+
+
+
 /*---------------------------------------------
 	/ Filter
 */

@@ -7,7 +7,9 @@
 		<title>CSIS 4351 Interactive Prototype</title>
 
 		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-		<script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+
+		<script type="module" src="https://unpkg.com/ionicons@5.0.0/dist/ionicons/ionicons.esm.js"></script>
+		<script nomodule="" src="https://unpkg.com/ionicons@5.0.0/dist/ionicons/ionicons.js"></script>
 
 		<link href="css/style.css" rel="stylesheet" type="text/css" />
 		<link href="css/md-checkbox.css" rel="stylesheet" type="text/css" />
@@ -490,9 +492,10 @@
 
 			<div class="screen search-results">
 				<nav class="menu" id="nav-menu" onclick="this.classList.remove('visible')">
-					<span class="active">Search results</span>
-					<span>Applications</span>
-					<span>My profile</span>
+					<span class="active">Home</span>
+					<span>Profile</span>
+					<span>My applications</span>
+					<span>Saved internships</span>
 					<span>Settings</span>
 					<span>Help</span>
 				</nav>
@@ -509,7 +512,7 @@
 				</header>
 
 				<ul class="results">
-					<li>
+					<li onclick="showScreen('details')">
 						<div>
 							<h2 class="title">Backend Node.js Development</h2>
 							<span class="pay">$15/hr</span>
@@ -526,7 +529,7 @@
 						</div>
 					</li>
 
-					<li>
+					<li onclick="showScreen('details')">
 						<div>
 							<h2 class="title">Backend Node.js Development</h2>
 							<span class="pay">$15/hr</span>
@@ -543,7 +546,7 @@
 						</div>
 					</li>
 
-					<li>
+					<li onclick="showScreen('details')">
 						<div>
 							<h2 class="title">Backend Node.js Development</h2>
 							<span class="pay">$15/hr</span>
@@ -560,7 +563,7 @@
 						</div>
 					</li>
 
-					<li>
+					<li onclick="showScreen('details')">
 						<div>
 							<h2 class="title">Backend Node.js Development</h2>
 							<span class="pay">$15/hr</span>
@@ -577,7 +580,7 @@
 						</div>
 					</li>
 
-					<li>
+					<li onclick="showScreen('details')">
 						<div>
 							<h2 class="title">Backend Node.js Development</h2>
 							<span class="pay">$15/hr</span>
@@ -594,7 +597,7 @@
 						</div>
 					</li>
 
-					<li>
+					<li onclick="showScreen('details')">
 						<div>
 							<h2 class="title">Backend Node.js Development</h2>
 							<span class="pay">$15/hr</span>
@@ -611,7 +614,7 @@
 						</div>
 					</li>
 
-					<li>
+					<li onclick="showScreen('details')">
 						<div>
 							<h2 class="title">Backend Node.js Development</h2>
 							<span class="pay">$15/hr</span>
@@ -628,7 +631,7 @@
 						</div>
 					</li>
 
-					<li>
+					<li onclick="showScreen('details')">
 						<div>
 							<h2 class="title">Backend Node.js Development</h2>
 							<span class="pay">$15/hr</span>
@@ -645,7 +648,7 @@
 						</div>
 					</li>
 
-					<li>
+					<li onclick="showScreen('details')">
 						<div>
 							<h2 class="title">Backend Node.js Development</h2>
 							<span class="pay">$15/hr</span>
@@ -662,7 +665,7 @@
 						</div>
 					</li>
 
-					<li>
+					<li onclick="showScreen('details')">
 						<div>
 							<h2 class="title">Backend Node.js Development</h2>
 							<span class="pay">$15/hr</span>
@@ -679,7 +682,7 @@
 						</div>
 					</li>
 
-					<li>
+					<li onclick="showScreen('details')">
 						<div>
 							<h2 class="title">Backend Node.js Development</h2>
 							<span class="pay">$15/hr</span>
@@ -696,7 +699,7 @@
 						</div>
 					</li>
 
-					<li>
+					<li onclick="showScreen('details')">
 						<div>
 							<h2 class="title">Backend Node.js Development</h2>
 							<span class="pay">$15/hr</span>
@@ -713,6 +716,93 @@
 						</div>
 					</li>
 				</ul>
+			</div>
+
+			<div class="screen details">
+				<header class="app-bar">
+					<button type="button" class="icon back" onclick="showScreen('search-results')"><ion-icon name="chevron-back-outline"></ion-icon></button>
+
+					<div class="tabs">
+						<span class="internship" onclick="this.parentElement.parentElement.parentElement.classList.toggle('company-visible')">Internship</span>
+						<span class="company" onclick="this.parentElement.parentElement.parentElement.classList.toggle('company-visible')">Company</span>
+					</div>
+
+					<button type="button" class="icon save" onclick="this.firstElementChild.setAttribute('name', this.classList.toggle('saved') ? 'heart' : 'heart-outline')">
+						<ion-icon name="heart-outline"></ion-icon>
+					</button>
+				</header>
+
+				<main>
+					<div class="internship">
+						<h1 class="title">Backend Node.js Development</h1>
+						<h2 class="location">Miami, FL</h2>
+
+						<div class="tags">
+							<span class="type">Full-time</span>
+							<span class="duration">12 weeks</span>
+							<span class="pay">$15/hour</span>
+						</div>
+
+						<dl class="specs">
+							<dt>Tech stack</dt> <dd>MEAN</dd>
+							<dt>Industry</dt> <dd>Cybersecurity</dd>
+							<dt>Relocation</dt> <dd>Paid</dd>
+							<dt>Company</dt> <dd>MegaBig Corp</dd>
+
+							<div class="hidden">
+								<button type="button" class="icon expand" onclick="toggleDetails(this)"><ion-icon name="chevron-down-outline"></ion-icon></button>
+
+								<dt>Living stipend</dt> <dd>$1,500 / month</dd>
+								<dt>Team/group size</dt> <dd>5 / 150 developers</dd>
+								<dt>First-year salaries</dt> <dd>180 - 200k</dd>
+							</div>
+						</dl>
+
+						<div class="description">
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Aliquet risus feugiat in ante metus dictum at.</p>
+
+							<p>Enim ut tellus elementum sagittis vitae et leo duis. Pellentesque massa placerat duis ultricies lacus sed turpis. Cursus eget nunc scelerisque viverra mauris in. Facilisi etiam dignissim diam quis enim lobortis scelerisque fermentum dui. Lorem mollis aliquam ut porttitor. Amet porttitor eget dolor morbi non arcu risus quis varius. Eget sit amet tellus cras adipiscing enim eu. At risus viverra adipiscing at in tellus. Turpis massa tincidunt dui ut ornare lectus sit. Ornare arcu odio ut sem nulla pharetra. Mauris augue neque gravida in fermentum. Nisl condimentum id venenatis a condimentum vitae sapien pellentesque habitant. Tincidunt arcu non sodales neque sodales ut. Et ultrices neque ornare aenean euismod elementum. Semper feugiat nibh sed pulvinar proin gravida hendrerit lectus a.</p>
+
+							<p>Leo integer malesuada nunc vel risus commodo viverra maecenas accumsan. Id cursus metus aliquam eleifend. Non enim praesent elementum facilisis leo. Facilisi cras fermentum odio eu feugiat pretium nibh ipsum consequat. Non blandit massa enim nec dui nunc mattis enim. Dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu. Malesuada bibendum arcu vitae elementum curabitur vitae nunc sed velit. Integer enim neque volutpat ac tincidunt vitae semper. Pellentesque eu tincidunt tortor aliquam nulla facilisi cras fermentum.</p>
+						</div>
+					</div>
+
+					<div class="company">
+						<h1 class="title">MegaBig Corp</h1>
+						<h2 class="location">Camp Peary, VA</h2>
+
+						<p class="subtitle">Specializing in proactive third-amendment defense, MegaBig Corp offers offensive cybersecurity solutions to help clients achieve peace of mind and reduce costly business interruptions</p>
+
+						<dl class="specs">
+							<dt>Main tech</dt> <dd>Python, Java, C++</dd>
+							<dt>Industry</dt> <dd>Cybersecurity</dd>
+							<dt>Employees</dt> <dd>1,000</dd>
+							<dt>Intern-to-hire rate</dt> <dd>100%</dd>
+
+							<div class="hidden">
+								<button type="button" class="icon expand" onclick="toggleDetails(this)"><ion-icon name="chevron-down-outline"></ion-icon></button>
+
+								<dt>Services</dt> <dd>Security consulting</dd>
+								<dt>Offices</dt> <dd>15 globally</dd>
+								<dt>Age</dt> <dd>244 years</dd>
+							</div>
+						</dl>
+
+						<div class="pictures">
+							<img src="https://unsplash.com/photos/uuwA21vmI3o/download?force=true&w=640" alt="Building" />
+							<img src="https://unsplash.com/photos/Y-ph0PRiLqk/download?force=true&w=640" alt="Special ops" />
+							<img src="https://unsplash.com/photos/eHD8Y1Znfpk/download?force=true&w=640" alt="Table" />
+						</div>
+
+						<div class="description">
+							<p>Founded in 1776, MegaBig is the third oldest lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Aliquet risus feugiat in ante metus dictum at.</p>
+
+							<p>Enim ut tellus elementum sagittis vitae et leo duis. Pellentesque massa placerat duis ultricies lacus sed turpis. Cursus eget nunc scelerisque viverra mauris in. Facilisi etiam dignissim diam quis enim lobortis scelerisque fermentum dui. Lorem mollis aliquam ut porttitor. Amet porttitor eget dolor morbi non arcu risus quis varius. Eget sit amet tellus cras adipiscing enim eu. At risus viverra adipiscing at in tellus. Turpis massa tincidunt dui ut ornare lectus sit. Ornare arcu odio ut sem nulla pharetra. Mauris augue neque gravida in fermentum. Nisl condimentum id venenatis a condimentum vitae sapien pellentesque habitant. Tincidunt arcu non sodales neque sodales ut. Et ultrices neque ornare aenean euismod elementum. Semper feugiat nibh sed pulvinar proin gravida hendrerit lectus a.</p>
+						</div>
+					</div>
+				</main>
+
+				<button type="button" class="btn blue apply">Apply Now</button>
 			</div>
 
 			<div class="screen filter">
@@ -841,6 +931,15 @@
 				sel.parentElement.querySelector(".selected").innerHTML += `<span class="selected-chip">${sel.selectedOptions[0].innerText.trim().trim()}</span>`;
 
 				sel.value = "initial";
+			}
+
+			function toggleDetails(elm) {
+				if (elm.parentNode.classList.toggle('hidden')) {
+					elm.innerHTML = `<ion-icon name="chevron-down-outline"></ion-icon>`;
+				}
+				else {
+					elm.innerHTML = `<ion-icon name="chevron-up-outline"></ion-icon>`;
+				}
 			}
 
 			[].forEach.call(document.querySelectorAll("form"), f => f.addEventListener("click", e => {
