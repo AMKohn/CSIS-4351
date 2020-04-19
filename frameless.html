@@ -32,6 +32,8 @@
 			</div>
 
 			<div class="screen welcome">
+				<button type="button" class="icon skip" onclick="showScreen('search-results')">Skip <ion-icon name="chevron-forward"></ion-icon></button>
+
 				<svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
 					<path d="M256,256s-48-96-126-96c-54.12,0-98,43-98,96s43.88,96,98,96c30,0,56.45-13.18,78-32" style="fill:none;stroke:currentColor;stroke-linecap:round;stroke-miterlimit:10;stroke-width:48px"/>
 					<path d="M256,256s48,96,126,96c54.12,0,98-43,98-96s-43.88-96-98-96c-29.37,0-56.66,13.75-78,32" style="fill:none;stroke:currentColor;stroke-linecap:round;stroke-miterlimit:10;stroke-width:48px"/>
@@ -723,8 +725,8 @@
 					<button type="button" class="icon back" onclick="showScreen('search-results')"><ion-icon name="chevron-back-outline"></ion-icon></button>
 
 					<div class="tabs">
-						<span class="internship" onclick="this.parentElement.parentElement.parentElement.classList.toggle('company-visible')">Internship</span>
-						<span class="company" onclick="this.parentElement.parentElement.parentElement.classList.toggle('company-visible')">Company</span>
+						<span class="internship" onclick="this.parentElement.parentElement.parentElement.classList.remove('company-visible')">Internship</span>
+						<span class="company" onclick="this.parentElement.parentElement.parentElement.classList.add('company-visible')">Company</span>
 					</div>
 
 					<button type="button" class="icon save" onclick="this.firstElementChild.setAttribute('name', this.classList.toggle('saved') ? 'heart' : 'heart-outline')">
@@ -743,14 +745,14 @@
 							<span class="pay">$15/hour</span>
 						</div>
 
-						<dl class="specs">
+						<dl class="specs collapsed" onclick="toggleDetails(this)">
 							<dt>Tech stack</dt> <dd>MEAN</dd>
 							<dt>Industry</dt> <dd>Cybersecurity</dd>
 							<dt>Relocation</dt> <dd>Paid</dd>
 							<dt>Company</dt> <dd>MegaBig Corp</dd>
 
-							<div class="hidden">
-								<button type="button" class="icon expand" onclick="toggleDetails(this)"><ion-icon name="chevron-down-outline"></ion-icon></button>
+							<div>
+								<button type="button" class="icon expand"><ion-icon name="chevron-down-outline"></ion-icon></button>
 
 								<dt>Living stipend</dt> <dd>$1,500 / month</dd>
 								<dt>Team/group size</dt> <dd>5 / 150 developers</dd>
@@ -773,14 +775,14 @@
 
 						<p class="subtitle">Specializing in proactive third-amendment defense, MegaBig Corp offers offensive cybersecurity solutions to help clients achieve peace of mind and reduce costly business interruptions</p>
 
-						<dl class="specs">
+						<dl class="specs collapsed" onclick="toggleDetails(this)">
 							<dt>Main tech</dt> <dd>Python, Java, C++</dd>
 							<dt>Industry</dt> <dd>Cybersecurity</dd>
 							<dt>Employees</dt> <dd>1,000</dd>
 							<dt>Intern-to-hire rate</dt> <dd>100%</dd>
 
-							<div class="hidden">
-								<button type="button" class="icon expand" onclick="toggleDetails(this)"><ion-icon name="chevron-down-outline"></ion-icon></button>
+							<div>
+								<button type="button" class="icon expand"><ion-icon name="chevron-down-outline"></ion-icon></button>
 
 								<dt>Services</dt> <dd>Security consulting</dd>
 								<dt>Offices</dt> <dd>15 globally</dd>
@@ -789,9 +791,9 @@
 						</dl>
 
 						<div class="pictures">
-							<img src="https://unsplash.com/photos/uuwA21vmI3o/download?force=true&w=640" alt="Building" />
-							<img src="https://unsplash.com/photos/Y-ph0PRiLqk/download?force=true&w=640" alt="Special ops" />
-							<img src="https://unsplash.com/photos/eHD8Y1Znfpk/download?force=true&w=640" alt="Table" />
+							<img src="https://source.unsplash.com/uuwA21vmI3o/640x427" alt="Building" />
+							<img src="https://source.unsplash.com/Y-ph0PRiLqk/640x427" alt="Special ops" />
+							<img src="https://source.unsplash.com/eHD8Y1Znfpk/640x427" alt="Table" />
 						</div>
 
 						<div class="description">
@@ -802,7 +804,56 @@
 					</div>
 				</main>
 
-				<button type="button" class="btn blue apply">Apply Now</button>
+				<button type="button" class="btn blue apply" onclick="document.querySelector('.screen.details .apply-modal').classList.add('visible')">Apply Now</button>
+
+				<div class="apply-modal">
+					<header class="app-bar">
+						<h1>Apply</h1>
+
+						<button type="button" class="icon close" onclick="document.querySelector('.screen.details .apply-modal').classList.remove('visible')">
+							<ion-icon name="close-outline"></ion-icon>
+						</button>
+					</header>
+
+					<form class="app-form" autocomplete="off">
+						<p class="info-note">Your profile will be sent with this application</p>
+
+						<div class="section resume">
+							<h3>Resume</h3>
+
+							<div>
+								<span>existing-resume.pdf</span>
+
+								<button type="button" class="btn flat blue">Change</button>
+							</div>
+						</div>
+
+						<h2>Employer Questionnaire</h2>
+
+						<label class="credit material-switch">
+							<input type="checkbox" />
+							<span>I will require sponsorship</span>
+						</label>
+
+						<div class="section app-term">
+							<label for="app-term">Preferred dates</label>
+
+							<select id="app-term" onchange="addSelectChip(this)">
+								<option selected disabled hidden value="initial">Select one to add</option>
+								<option>5/11 - 7/31</option>
+								<option>5/17 - 8/06</option>
+								<option>5/24 - 8/13</option>
+								<option>6/1 - 8/20</option>
+							</select>
+
+							<div class="selected"></div>
+						</div>
+
+						<button type="button" class="btn flat blue">Attach cover letter</button>
+					</form>
+
+					<button type="button" class="btn blue submit" onclick="submitApplication()">Submit Application</button>
+				</div>
 			</div>
 
 			<div class="screen filter">
@@ -817,6 +868,18 @@
 						<label for="keywords">Keywords</label>
 
 						<input type="text" id="keywords" placeholder="Enter keywords to filter by" />
+					</div>
+
+					<div class="section sort">
+						<label for="sort">Sort by</label>
+
+						<select id="sort">
+							<option>Relevance</option>
+							<option>Distance</option>
+							<option>Commute time</option>
+							<option>Posted date</option>
+							<option>Compensation</option>
+						</select>
 					</div>
 
 					<div class="section function">
@@ -934,12 +997,26 @@
 			}
 
 			function toggleDetails(elm) {
-				if (elm.parentNode.classList.toggle('hidden')) {
-					elm.innerHTML = `<ion-icon name="chevron-down-outline"></ion-icon>`;
+				if (elm.classList.toggle('collapsed')) {
+					elm.querySelector("button.expand").innerHTML = `<ion-icon name="chevron-down-outline"></ion-icon>`;
 				}
 				else {
-					elm.innerHTML = `<ion-icon name="chevron-up-outline"></ion-icon>`;
+					elm.querySelector("button.expand").innerHTML = `<ion-icon name="chevron-up-outline"></ion-icon>`;
 				}
+			}
+
+			function submitApplication() {
+				document.querySelector(".screen.details .apply-modal").classList.remove("visible")
+
+				showScreen("search-results");
+
+				let p = document.createElement("p");
+				p.classList.add("toast");
+				p.innerHTML = "Application successfully submitted";
+
+				document.querySelector(".screen-container").appendChild(p);
+
+				setTimeout(() => p.parentElement.removeChild(p), 6000);
 			}
 
 			[].forEach.call(document.querySelectorAll("form"), f => f.addEventListener("click", e => {

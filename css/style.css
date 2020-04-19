@@ -151,6 +151,30 @@ body {
 .btn.flat.green		{ color: #4CAF50; }
 .btn.flat.orange	{ color: #FF9800; }
 
+.toast {
+	position: fixed;
+	bottom: 12px;
+	left: 12px;
+	right: 12px;
+	line-height: 56px;
+	background: #333;
+	color: rgba(255, 255, 255, 0.87);
+	padding: 0 25px;
+	border-radius: 4px;
+	box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
+	animation: toast-animation 5s ease forwards;
+}
+
+@keyframes toast-animation {
+	0%, 100% {
+		bottom: -65px;
+	}
+
+	10%, 90% {
+		bottom: 12px;
+	}
+}
+
 
 
 /*---------------------------------------------
@@ -171,7 +195,13 @@ body {
 	color: #0082FB;
 }
 
-.app-bar button.icon {
+.app-bar h1 {
+	font-size: 20px;
+	font-weight: 500;
+}
+
+.app-bar button.icon,
+.welcome button.icon {
 	outline: 0;
 	border: none;
 	padding: 8px;
@@ -186,11 +216,13 @@ body {
 	font-family: Roboto, sans-serif;
 }
 
-.app-bar button.icon ion-icon {
+.app-bar button.icon ion-icon,
+.welcome button.icon ion-icon {
 	font-size: 24px;
 }
 
-.app-bar button.icon:hover {
+.app-bar button.icon:hover,
+.welcome button.icon:hover {
 	opacity: 0.5;
 }
 
@@ -276,6 +308,7 @@ form .section label, form .section h3 {
 	color: #444;
 	display: block;
 	margin-bottom: 6px;
+	font-size: 14px;
 }
 
 form .section input, form .section select {
@@ -390,11 +423,17 @@ form .section .selected span:after {
 	/ Welcome
 */
 .screen.welcome .logo {
-	color: #0082FB;
 	color: #FFF;
 	width: 75%;
-	margin: 0 auto;
+	margin: 0 auto 30px;
 	flex: 1;
+}
+
+.screen.welcome button.skip {
+	color: #FFF;
+	position: absolute;
+	top: 8px;
+	right: 8px;
 }
 
 .screen.welcome {
@@ -442,21 +481,12 @@ form .section .selected span:after {
 	background: #0030df;
 }
 
-.onboarding .app-bar h1 {
-	font-size: 20px;
-	font-weight: 500;
-}
-
 .onboarding .app-bar button {
 	color: inherit;
 }
 
 .onboarding .app-bar button.icon:hover {
 	opacity: 0.85;
-}
-
-.onboarding .app-bar button ion-icon {
-	filter: invert(1);
 }
 
 .onboarding form {
@@ -794,11 +824,11 @@ button.icon.save.saved:after {
 }
 
 .details .tags .type {
-	--color: 30, 136, 229;
+	--color: 94, 53, 177;
 }
 
 .details .tags .duration {
-	--color: 94, 53, 177;
+	--color: 244, 81, 30;
 }
 
 
@@ -808,6 +838,7 @@ button.icon.save.saved:after {
 	padding: 10px 20px;
 	display: flex;
 	flex-flow: row wrap;
+	cursor: pointer;
 	justify-content: space-between;
 	line-height: 1.7;
 }
@@ -831,7 +862,7 @@ button.icon.save.saved:after {
 	transition: max-height .3s ease;
 }
 
-.details .specs > div.hidden {
+.details .specs.collapsed > div {
 	max-height: 18px;
 }
 
@@ -876,6 +907,98 @@ button.icon.save.saved:after {
 	font-size: 16px;
 	box-shadow: 0 -1px 3px rgba(0,0,0,.15);
 }
+
+
+
+
+
+/*---------------------------------------------
+	/ Details / Apply
+*/
+.details .apply-modal {
+	position: fixed;
+	top: 100%;
+	height: 100vh;
+	left: 0;
+	right: 0;
+	background: #FFF;
+	z-index: 1;
+	display: flex;
+	flex-flow: column;
+	transition: top .3s ease;
+}
+
+.details .apply-modal.visible {
+	top: 0;
+}
+
+.details .apply-modal .app-bar {
+	padding-left: 25px;
+	/* box-shadow: none; */
+	/* border-bottom: 1px solid rgba(0, 0, 0, 0.1); */
+}
+
+.details .apply-modal form {
+	padding: 20px;
+}
+
+.details .apply-modal form p {
+	margin-bottom: 15px;
+	line-height: 1.6;
+}
+
+.details .apply-modal form .section {
+	padding: 10px 8px;
+}
+
+.details .apply-modal form .letter {
+	padding: 2px 0;
+	margin: 15px 0 25px;
+}
+
+.details .apply-modal button.submit {
+	width: 80%;
+	margin: 20px auto;
+	padding: 20px 35px;
+	display: block;
+}
+
+.details .apply-modal form .material-switch {
+	margin: 10px 8px;
+}
+
+.details .apply-modal form p.info-note {
+	padding: 10px 16px;
+	border: 1px solid rgba(0, 0, 0, 0.05);
+	margin: -20px -20px 15px;
+	background: rgba(30, 136, 229, 0.3);
+	font-weight: 500;
+}
+
+.details .apply-modal .resume div {
+	display: flex;
+	margin-top: 12px;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.details .apply-modal form h2 {
+	font-size: 14px;
+	margin: 25px 0 15px;
+	font-weight: 500;
+	color: #666;
+	text-transform: uppercase;
+}
+
+.details .apply-modal .resume div span {
+	padding: 0 16px;
+	line-height: 32px;
+	border-radius: 18px;
+	font-weight: 500;
+	background: #F5F5F5;
+	border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
 
 
 
