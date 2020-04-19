@@ -470,7 +470,6 @@ form .section .selected span:after {
 	cursor: pointer;
 }
 
-
 .onboarding p.progress {
 	position: absolute;
 	bottom: 0;
@@ -497,6 +496,77 @@ form .section .selected span:after {
 .onboarding-2 p.progress:after { border-left-width: 50vw; }
 .onboarding-3 p.progress:after { border-left-width: 75vw; }
 .onboarding-4 p.progress:after { border-left-width: 100vw; }
+
+.onboarding .option-list:before {
+	color: #666;
+	margin: 15px;
+	display: block;
+}
+
+.onboarding-3 .option-list:before {
+	content: "Select what you'd like to be doing in an internship";
+}
+
+.onboarding-4 .option-list:before {
+	content: "Select the industries you'd like to work in";
+}
+
+.onboarding .option-list {
+	flex: 1;
+	overflow: auto;
+	padding-bottom: 32px;
+}
+
+.onboarding .option-list > li:last-of-type {
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.onboarding .option-list label {
+	padding: 15px 15px 15px 20px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.onboarding .option-list button {
+	font-size: 24px;
+	height: 24px;
+	cursor: pointer;
+}
+
+.onboarding .option-list button ion-icon {
+	pointer-events: none;
+}
+
+.onboarding .option-list span {
+	flex: 1;
+}
+
+.onboarding .option-list li {
+	border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.onboarding .option-list li ul li > label {
+	border-left: 20px solid transparent;
+}
+
+.onboarding .option-list li ul {
+	background: #F5F5F5;
+	box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.1);
+	overflow: hidden;
+}
+
+.onboarding .option-list li ul.collapsed {
+	height: 0;
+}
+
+.onboarding .option-list li ul li ul {
+	background: #E5E5E5;
+}
+
+.onboarding .option-list li ul li ul li > label {
+	border-left: 40px solid transparent;
+}
 
 
 
