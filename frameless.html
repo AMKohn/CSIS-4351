@@ -41,7 +41,10 @@
 
 				<h1>Welcome!</h1>
 
-				<p>Enter your information on the next screens and we'll help find the best internship for you</p>
+				<p>
+					Enter your information on the next few pages and we'll help you find some awesome internships!<br><br>
+					Everything's optional, but the more info you provide the better your results
+				</p>
 
 				<button type="button" class="btn blue next" onclick="showScreen('onboarding-1')">Get Started</button>
 			</div>
@@ -101,7 +104,7 @@
 
 						<label for="gpa">GPA</label>
 
-						<input type="text" id="gpa" placeholder="Enter your GPA on a 4.0 scale" />
+						<input type="number" id="gpa" placeholder="Enter your GPA on a 4.0 scale" />
 					</div>
 				</form>
 
@@ -822,9 +825,9 @@
 							<h3>Resume</h3>
 
 							<div>
-								<span>existing-resume.pdf</span>
+								<span class="error">No resume selected</span>
 
-								<button type="button" class="btn flat blue">Change</button>
+								<button type="button" class="btn flat blue" onclick="this.innerHTML = 'Change';this.previousElementSibling.innerHTML = 'existing-resume.pdf';this.previousElementSibling.classList.remove('error')">Select</button>
 							</div>
 						</div>
 
@@ -1006,13 +1009,24 @@
 			}
 
 			function submitApplication() {
-				document.querySelector(".screen.details .apply-modal").classList.remove("visible")
-
-				showScreen("search-results");
-
 				let p = document.createElement("p");
 				p.classList.add("toast");
-				p.innerHTML = "Application successfully submitted";
+
+				if (document.querySelector(".screen.details .apply-modal .resume .error")) {
+					p.innerHTML = "Please select a resume before continuing";
+				}
+				else {
+					document.querySelector(".screen.details .apply-modal").classList.remove("visible")
+
+					showScreen("search-results");
+
+					p.innerHTML = "Application successfully submitted";
+				}
+
+				// Don't create duplicate toasts. In production, toasts would just stack
+				if (document.querySelector(".screen-container > .toast")) {
+					return;
+				}
 
 				document.querySelector(".screen-container").appendChild(p);
 

@@ -157,6 +157,7 @@ body {
 	left: 12px;
 	right: 12px;
 	line-height: 56px;
+	z-index: 2;
 	background: #333;
 	color: rgba(255, 255, 255, 0.87);
 	padding: 0 25px;
@@ -427,6 +428,17 @@ form .section .selected span:after {
 	width: 75%;
 	margin: 0 auto 30px;
 	flex: 1;
+}
+
+.screen.welcome:after {
+	content: "Infinite Internships";
+	position: absolute;
+	top: 280px;
+	width: 100%;
+	left: 0;
+	font-size: 30px;
+	text-align: center;
+	font-weight: 300;
 }
 
 .screen.welcome button.skip {
@@ -871,6 +883,7 @@ button.icon.save.saved:after {
 	height: 24px;
 	font-size: 24px;
 	margin: -2px 0;
+	cursor: pointer;
 }
 
 .details .pictures {
@@ -997,6 +1010,11 @@ button.icon.save.saved:after {
 	font-weight: 500;
 	background: #F5F5F5;
 	border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.details .apply-modal .resume div span.error {
+	background: rgba(229, 57, 53, 0.15);
+	color: #E53935;
 }
 
 
