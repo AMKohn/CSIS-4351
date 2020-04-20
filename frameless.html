@@ -1009,6 +1009,13 @@
 			}
 
 			function submitApplication() {
+				let existing = document.querySelector(".screen-container > .toast");
+
+				// Remove any other active toast
+				if (existing) {
+					existing.parentElement.removeChild(existing);
+				}
+
 				let p = document.createElement("p");
 				p.classList.add("toast");
 
@@ -1021,11 +1028,6 @@
 					showScreen("search-results");
 
 					p.innerHTML = "Application successfully submitted";
-				}
-
-				// Don't create duplicate toasts. In production, toasts would just stack
-				if (document.querySelector(".screen-container > .toast")) {
-					return;
 				}
 
 				document.querySelector(".screen-container").appendChild(p);
