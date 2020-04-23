@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0">
+
+		<title>CSIS 4351 Interactive Prototype</title>
+
+		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+		<script type="module" src="https://unpkg.com/ionicons@5.0.0/dist/ionicons/ionicons.esm.js"></script>
+		<script nomodule="" src="https://unpkg.com/ionicons@5.0.0/dist/ionicons/ionicons.js"></script>
+
+		<link href="css/style.css" rel="stylesheet" type="text/css" />
+		<link href="css/md-checkbox.css" rel="stylesheet" type="text/css" />
+	</head>
+
+	<body>
+		<div class="screen-container">
+			<div class="screen start visible">
+				<h1>CSIS 4351</h1>
+
+				<p>Interactive prototype</p>
+
+				<p>Avi Kohn<br>Khalad Mahabub<br>Abdul Sarker</p>
+
+				<p>Please select a starting point</p>
+
+				<button type="button" class="btn blue" onclick="showScreen('welcome')">First run</button>
+
+				<button type="button" class="btn blue" onclick="showScreen('search-results')">Home screen</button>
+			</div>
+
+			<div class="screen welcome">
+				<button type="button" class="icon skip" onclick="showScreen('search-results')">Skip <ion-icon name="chevron-forward"></ion-icon></button>
+
+				<svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+					<path d="M256,256s-48-96-126-96c-54.12,0-98,43-98,96s43.88,96,98,96c30,0,56.45-13.18,78-32" style="fill:none;stroke:currentColor;stroke-linecap:round;stroke-miterlimit:10;stroke-width:48px"/>
+					<path d="M256,256s48,96,126,96c54.12,0,98-43,98-96s-43.88-96-98-96c-29.37,0-56.66,13.75-78,32" style="fill:none;stroke:currentColor;stroke-linecap:round;stroke-miterlimit:10;stroke-width:48px"/>
+				</svg>
+
+				<h1>Welcome!</h1>
+
+				<p>
+					Enter your information on the next few pages and we'll help you find some awesome internships!<br><br>
+					Everything's optional, but the more info you provide the better your results
+				</p>
+
+				<button type="button" class="btn blue next" onclick="showScreen('onboarding-1')">Get Started</button>
+			</div>
+
+			<div class="screen onboarding onboarding-1">
+				<header class="app-bar">
+					<button type="button" class="icon prev" onclick="showScreen('welcome')"><ion-icon name="chevron-back"></ion-icon> Prev</button>
+
+					<h1>Academics</h1>
+
+					<button type="button" class="icon next" onclick="showScreen('onboarding-2')">Next <ion-icon name="chevron-forward"></ion-icon></button>
+				</header>
+
+				<form class="academics" autocomplete="off">
+					<div class="section program">
+						<label for="program">Program</label>
+
+						<select id="program">
+							<option>Undergraduate - Associate</option>
+							<option>Undergraduate - Bachelor</option>
+							<option>Graduate - Masters</option>
+							<option>Graduate - PhD</option>
+						</select>
+					</div>
+
+					<div class="section year">
+						<label for="year">Current Year</label>
+
+						<select id="year">
+							<option>Freshman</option>
+							<option>Sophomore</option>
+							<option>Junior</option>
+							<option>Senior</option>
+						</select>
+					</div>
+
+					<div class="section fields">
+						<label for="fields">Field(s) of Study</label>
+
+						<input type="text" id="fields" placeholder="Start typing..." />
+
+						<ul class="autocomplete">
+							<li>Computer Science</li>
+							<li>Information Technology</li>
+							<li>Data Science</li>
+							<li>Mathematics</li>
+							<li>Business</li>
+						</ul>
+
+						<div class="selected">
+							<span class="selected-chip">Computer Science</span>
+						</div>
+					</div>
+
+					<div class="section gpa">
+						<span class="why">Why?</span>
+
+						<label for="gpa">GPA</label>
+
+						<input type="number" id="gpa" placeholder="Enter your GPA on a 4.0 scale" />
+					</div>
+				</form>
+
+				<p class="progress">1 of 4</p>
+			</div>
+
+			<div class="screen onboarding onboarding-2">
+				<header class="app-bar">
+					<button type="button" class="icon prev" onclick="showScreen('onboarding-1')"><ion-icon name="chevron-back-outline"></ion-icon> Prev</button>
+
+					<h1>Requirements</h1>
+
+					<button type="button" class="icon next" onclick="showScreen('onboarding-3')">Next <ion-icon name="chevron-forward-outline"></ion-icon></button>
+				</header>
+
+				<form class="requirements" autocomplete="off">
+					<div class="section location">
+						<label for="ob-location">Location</label>
+
+						<input type="text" id="ob-location" placeholder="City, State, or Zip" />
+
+						<ul class="autocomplete">
+							<li>Hollywood, FL</li>
+							<li>Fort Lauderdale, FL</li>
+							<li>Miami, FL</li>
+							<li>Boca Raton, FL</li>
+							<li>Orlando, FL</li>
+						</ul>
+
+						<div class="selected">
+							<span class="selected-chip">Dallas, TX</span>
+							<span class="selected-chip">Fort Lauderdale, FL</span>
+						</div>
+					</div>
+
+					<div class="section commute">
+						<label for="ob-commute">Maximum Commute</label>
+
+						<select id="ob-commute">
+							<option>5 minutes</option>
+							<option>15 minutes</option>
+							<option>30 minutes</option>
+							<option>45 minutes</option>
+							<option>1 hour</option>
+							<option>1.5 hours</option>
+							<option>3 hours</option>
+						</select>
+					</div>
+
+					<div class="section min-pay">
+						<label for="min-pay">Minimum Pay</label>
+
+						<select id="min-pay">
+							<option>Unpaid</option>
+							<option>Contract</option>
+							<option>$10/hour</option>
+							<option>$15/hour</option>
+							<option>$20/hour</option>
+							<option>$30/hour</option>
+							<option>$40/hour</option>
+						</select>
+					</div>
+
+					<div class="section term">
+						<label for="ob-term">Internship Term</label>
+
+						<select id="ob-term" onchange="addSelectChip(this)">
+							<option selected disabled hidden value="initial">Select one to add</option>
+							<option>Summer 2021</option>
+							<option>Fall 2021</option>
+							<option>Spring 2022</option>
+							<option>Summer 2022</option>
+						</select>
+
+						<div class="selected">
+							<span class="selected-chip">Summer 2020</span>
+							<span class="selected-chip">Fall 2020</span>
+						</div>
+					</div>
+
+					<label class="credit material-switch">
+						<input type="checkbox" />
+						<span>Must be willing to offer academic credit</span>
+					</label>
+
+					<label class="sponsor material-switch">
+						<input type="checkbox" />
+						<span>Must be willing to sponsor</span>
+					</label>
+				</form>
+
+				<p class="progress">2 of 4</p>
+			</div>
+
+			<div class="screen onboarding onboarding-3">
+				<header class="app-bar">
+					<button type="button" class="icon prev" onclick="showScreen('onboarding-2')"><ion-icon name="chevron-back-outline"></ion-icon> Prev</button>
+
+					<h1>Job Functions</h1>
+
+					<button type="button" class="icon next" onclick="showScreen('onboarding-4')">Next <ion-icon name="chevron-forward-outline"></ion-icon></button>
+				</header>
+
+				<ul class="option-list">
+					<li>
+						<label>
+							<input type="checkbox" />
+							<span>Software Development</span>
+							<button type="button" class="icon expand"><ion-icon name="chevron-down-outline"></ion-icon></button>
+						</label>
+
+						<ul>
+							<li>
+								<label>
+									<input type="checkbox" />
+									<span>Web Development</span>
+								</label>
+							</li>
+
+							<li>
+								<label>
+									<input type="checkbox" />
+									<span>Mobile App Development</span>
+									<button type="button" class="icon expand"><ion-icon name="chevron-down-outline"></ion-icon></button>
+								</label>
+
+								<ul>
+									<li>
+										<label>
+											<input type="checkbox" />
+											<span>iOS Development</span>
+										</label>
+									</li>
+
+									<li>
+										<label>
+											<input type="checkbox" />
+											<span>Android Development</span>
+										</label>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+
+					<li>
+						<label>
+							<input type="checkbox" />
+							<span>Research</span>
+							<button type="button" class="icon expand"><ion-icon name="chevron-forward-outline"></ion-icon></button>
+						</label>
+
+						<ul class="collapsed">
+							<li>
+								<label>
+									<input type="checkbox" />
+									<span>Placeholder 1</span>
+								</label>
+							</li>
+
+							<li>
+								<label>
+									<input type="checkbox" />
+									<span>Placeholder 2</span>
+								</label>
+							</li>
+						</ul>
+					</li>
+
+					<li>
+						<label>
+							<input type="checkbox" />
+							<span>Engineering</span>
+							<button type="button" class="icon expand"><ion-icon name="chevron-forward-outline"></ion-icon></button>
+						</label>
+
+						<ul class="collapsed">
+							<li>
+								<label>
+									<input type="checkbox" />
+									<span>Placeholder 1</span>
+								</label>
+							</li>
+
+							<li>
+								<label>
+									<input type="checkbox" />
+									<span>Placeholder 2</span>
+								</label>
+							</li>
+						</ul>
+					</li>
+
+					<li>
+						<label>
+							<input type="checkbox" />
+							<span>Business</span>
+							<button type="button" class="icon expand"><ion-icon name="chevron-forward-outline"></ion-icon></button>
+						</label>
+
+						<ul class="collapsed">
+							<li>
+								<label>
+									<input type="checkbox" />
+									<span>Placeholder 1</span>
+								</label>
+							</li>
+
+							<li>
+								<label>
+									<input type="checkbox" />
+									<span>Placeholder 2</span>
+								</label>
+							</li>
+						</ul>
+					</li>
+
+					<li>
+						<label>
+							<input type="checkbox" />
+							<span>Finance</span>
+						</label>
+					</li>
+
+					<li>
+						<label>
+							<input type="checkbox" />
+							<span>Marketing</span>
+						</label>
+					</li>
+
+					<li>
+						<label>
+							<input type="checkbox" />
+							<span>Workaholism</span>
+						</label>
+					</li>
+				</ul>
+
+				<p class="progress">3 of 4</p>
+			</div>
+
+			<div class="screen onboarding onboarding-4">
+				<header class="app-bar">
+					<button type="button" class="icon prev" onclick="showScreen('onboarding-3')"><ion-icon name="chevron-back-outline"></ion-icon> Prev</button>
+
+					<h1>Company Industries</h1>
+
+					<button type="button" class="icon next" onclick="showScreen('search-results')">Next <ion-icon name="chevron-forward-outline"></ion-icon></button>
+				</header>
+
+				<ul class="option-list">
+					<li>
+						<label>
+							<input type="checkbox" />
+							<span>Software Development</span>
+							<button type="button" class="icon expand"><ion-icon name="chevron-forward-outline"></ion-icon></button>
+						</label>
+
+						<ul class="collapsed">
+							<li>
+								<label>
+									<input type="checkbox" />
+									<span>Web Development</span>
+								</label>
+							</li>
+
+							<li>
+								<label>
+									<input type="checkbox" />
+									<span>Mobile App Development</span>
+									<button type="button" class="icon expand"><ion-icon name="chevron-forward-outline"></ion-icon></button>
+								</label>
+
+								<ul class="collapsed">
+									<li>
+										<label>
+											<input type="checkbox" />
+											<span>iOS Development</span>
+										</label>
+									</li>
+
+									<li>
+										<label>
+											<input type="checkbox" />
+											<span>Android Development</span>
+										</label>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+
+					<li>
+						<label>
+							<input type="checkbox" />
+							<span>Manufacturing</span>
+							<button type="button" class="icon expand"><ion-icon name="chevron-forward-outline"></ion-icon></button>
+						</label>
+
+						<ul class="collapsed">
+							<li>
+								<label>
+									<input type="checkbox" />
+									<span>Placeholder 1</span>
+								</label>
+							</li>
+
+							<li>
+								<label>
+									<input type="checkbox" />
+									<span>Placeholder 2</span>
+								</label>
+							</li>
+						</ul>
+					</li>
+
+					<li>
+						<label>
+							<input type="checkbox" />
+							<span>Aerospace</span>
+							<button type="button" class="icon expand"><ion-icon name="chevron-forward-outline"></ion-icon></button>
+						</label>
+
+						<ul class="collapsed">
+							<li>
+								<label>
+									<input type="checkbox" />
+									<span>Placeholder 1</span>
+								</label>
+							</li>
+
+							<li>
+								<label>
+									<input type="checkbox" />
+									<span>Placeholder 2</span>
+								</label>
+							</li>
+						</ul>
+					</li>
+
+					<li>
+						<label>
+							<input type="checkbox" />
+							<span>Cybersecurity</span>
+							<button type="button" class="icon expand"><ion-icon name="chevron-forward-outline"></ion-icon></button>
+						</label>
+
+						<ul class="collapsed">
+							<li>
+								<label>
+									<input type="checkbox" />
+									<span>Placeholder 1</span>
+								</label>
+							</li>
+
+							<li>
+								<label>
+									<input type="checkbox" />
+									<span>Placeholder 2</span>
+								</label>
+							</li>
+						</ul>
+					</li>
+
+					<li>
+						<label>
+							<input type="checkbox" />
+							<span>Finance</span>
+						</label>
+					</li>
+
+					<li>
+						<label>
+							<input type="checkbox" />
+							<span>Marketing</span>
+						</label>
+					</li>
+
+					<li>
+						<label>
+							<input type="checkbox" />
+							<span>Workaholism</span>
+						</label>
+					</li>
+				</ul>
+
+				<p class="progress">4 of 4</p>
+			</div>
+
+			<div class="screen search-results">
+				<nav class="menu" id="nav-menu" onclick="this.classList.remove('visible')">
+					<span class="active">Home</span>
+					<span>Profile</span>
+					<span>My applications</span>
+					<span>Saved internships</span>
+					<span>Settings</span>
+					<span>Help</span>
+				</nav>
+
+				<header class="app-bar">
+					<button type="button" class="icon menu" onclick="document.getElementById('nav-menu').classList.add('visible')"><ion-icon name="menu"></ion-icon></button>
+
+					<svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+						<path d="M256,256s-48-96-126-96c-54.12,0-98,43-98,96s43.88,96,98,96c30,0,56.45-13.18,78-32" style="fill:none;stroke:currentColor;stroke-linecap:round;stroke-miterlimit:10;stroke-width:48px"/>
+						<path d="M256,256s48,96,126,96c54.12,0,98-43,98-96s-43.88-96-98-96c-29.37,0-56.66,13.75-78,32" style="fill:none;stroke:currentColor;stroke-linecap:round;stroke-miterlimit:10;stroke-width:48px"/>
+					</svg>
+
+					<button type="button" class="icon filter" onclick="showScreen('filter')"><ion-icon name="filter"></ion-icon></button>
+				</header>
+
+				<ul class="results">
+					<li onclick="showScreen('details')">
+						<div>
+							<h2 class="title">Backend Node.js Development</h2>
+							<span class="pay">$15/hr</span>
+						</div>
+
+						<div>
+							<h3 class="company">MegaBig Corp</h3>
+							<span class="industry">Cybersecurity</span>
+						</div>
+
+						<div>
+							<span class="location">Sunrise, FL</span>
+							<span class="term">Summer 2021</span>
+						</div>
+					</li>
+
+					<li onclick="showScreen('details')">
+						<div>
+							<h2 class="title">Backend Node.js Development</h2>
+							<span class="pay">$15/hr</span>
+						</div>
+
+						<div>
+							<h3 class="company">MegaBig Corp</h3>
+							<span class="industry">Cybersecurity</span>
+						</div>
+
+						<div>
+							<span class="location">Sunrise, FL</span>
+							<span class="term">Summer 2021</span>
+						</div>
+					</li>
+
+					<li onclick="showScreen('details')">
+						<div>
+							<h2 class="title">Backend Node.js Development</h2>
+							<span class="pay">$15/hr</span>
+						</div>
+
+						<div>
+							<h3 class="company">MegaBig Corp</h3>
+							<span class="industry">Cybersecurity</span>
+						</div>
+
+						<div>
+							<span class="location">Sunrise, FL</span>
+							<span class="term">Summer 2021</span>
+						</div>
+					</li>
+
+					<li onclick="showScreen('details')">
+						<div>
+							<h2 class="title">Backend Node.js Development</h2>
+							<span class="pay">$15/hr</span>
+						</div>
+
+						<div>
+							<h3 class="company">MegaBig Corp</h3>
+							<span class="industry">Cybersecurity</span>
+						</div>
+
+						<div>
+							<span class="location">Sunrise, FL</span>
+							<span class="term">Summer 2021</span>
+						</div>
+					</li>
+
+					<li onclick="showScreen('details')">
+						<div>
+							<h2 class="title">Backend Node.js Development</h2>
+							<span class="pay">$15/hr</span>
+						</div>
+
+						<div>
+							<h3 class="company">MegaBig Corp</h3>
+							<span class="industry">Cybersecurity</span>
+						</div>
+
+						<div>
+							<span class="location">Sunrise, FL</span>
+							<span class="term">Summer 2021</span>
+						</div>
+					</li>
+
+					<li onclick="showScreen('details')">
+						<div>
+							<h2 class="title">Backend Node.js Development</h2>
+							<span class="pay">$15/hr</span>
+						</div>
+
+						<div>
+							<h3 class="company">MegaBig Corp</h3>
+							<span class="industry">Cybersecurity</span>
+						</div>
+
+						<div>
+							<span class="location">Sunrise, FL</span>
+							<span class="term">Summer 2021</span>
+						</div>
+					</li>
+
+					<li onclick="showScreen('details')">
+						<div>
+							<h2 class="title">Backend Node.js Development</h2>
+							<span class="pay">$15/hr</span>
+						</div>
+
+						<div>
+							<h3 class="company">MegaBig Corp</h3>
+							<span class="industry">Cybersecurity</span>
+						</div>
+
+						<div>
+							<span class="location">Sunrise, FL</span>
+							<span class="term">Summer 2021</span>
+						</div>
+					</li>
+
+					<li onclick="showScreen('details')">
+						<div>
+							<h2 class="title">Backend Node.js Development</h2>
+							<span class="pay">$15/hr</span>
+						</div>
+
+						<div>
+							<h3 class="company">MegaBig Corp</h3>
+							<span class="industry">Cybersecurity</span>
+						</div>
+
+						<div>
+							<span class="location">Sunrise, FL</span>
+							<span class="term">Summer 2021</span>
+						</div>
+					</li>
+
+					<li onclick="showScreen('details')">
+						<div>
+							<h2 class="title">Backend Node.js Development</h2>
+							<span class="pay">$15/hr</span>
+						</div>
+
+						<div>
+							<h3 class="company">MegaBig Corp</h3>
+							<span class="industry">Cybersecurity</span>
+						</div>
+
+						<div>
+							<span class="location">Sunrise, FL</span>
+							<span class="term">Summer 2021</span>
+						</div>
+					</li>
+
+					<li onclick="showScreen('details')">
+						<div>
+							<h2 class="title">Backend Node.js Development</h2>
+							<span class="pay">$15/hr</span>
+						</div>
+
+						<div>
+							<h3 class="company">MegaBig Corp</h3>
+							<span class="industry">Cybersecurity</span>
+						</div>
+
+						<div>
+							<span class="location">Sunrise, FL</span>
+							<span class="term">Summer 2021</span>
+						</div>
+					</li>
+
+					<li onclick="showScreen('details')">
+						<div>
+							<h2 class="title">Backend Node.js Development</h2>
+							<span class="pay">$15/hr</span>
+						</div>
+
+						<div>
+							<h3 class="company">MegaBig Corp</h3>
+							<span class="industry">Cybersecurity</span>
+						</div>
+
+						<div>
+							<span class="location">Sunrise, FL</span>
+							<span class="term">Summer 2021</span>
+						</div>
+					</li>
+
+					<li onclick="showScreen('details')">
+						<div>
+							<h2 class="title">Backend Node.js Development</h2>
+							<span class="pay">$15/hr</span>
+						</div>
+
+						<div>
+							<h3 class="company">MegaBig Corp</h3>
+							<span class="industry">Cybersecurity</span>
+						</div>
+
+						<div>
+							<span class="location">Sunrise, FL</span>
+							<span class="term">Summer 2021</span>
+						</div>
+					</li>
+				</ul>
+			</div>
+
+			<div class="screen details">
+				<header class="app-bar">
+					<button type="button" class="icon back" onclick="showScreen('search-results')"><ion-icon name="chevron-back-outline"></ion-icon></button>
+
+					<div class="tabs">
+						<span class="internship" onclick="this.parentElement.parentElement.parentElement.classList.remove('company-visible')">Internship</span>
+						<span class="company" onclick="this.parentElement.parentElement.parentElement.classList.add('company-visible')">Company</span>
+					</div>
+
+					<button type="button" class="icon save" onclick="this.firstElementChild.setAttribute('name', this.classList.toggle('saved') ? 'heart' : 'heart-outline')">
+						<ion-icon name="heart-outline"></ion-icon>
+					</button>
+				</header>
+
+				<main>
+					<div class="internship">
+						<h1 class="title">Backend Node.js Development</h1>
+						<h2 class="location">Miami, FL</h2>
+
+						<div class="tags">
+							<span class="type">Full-time</span>
+							<span class="duration">12 weeks</span>
+							<span class="pay">$15/hour</span>
+						</div>
+
+						<dl class="specs collapsed" onclick="toggleDetails(this)">
+							<dt>Tech stack</dt> <dd>MEAN</dd>
+							<dt>Industry</dt> <dd>Cybersecurity</dd>
+							<dt>Relocation</dt> <dd>Paid</dd>
+							<dt>Company</dt> <dd>MegaBig Corp</dd>
+
+							<div>
+								<button type="button" class="icon expand"><ion-icon name="chevron-down-outline"></ion-icon></button>
+
+								<dt>Living stipend</dt> <dd>$1,500 / month</dd>
+								<dt>Team/group size</dt> <dd>5 / 150 developers</dd>
+								<dt>First-year salaries</dt> <dd>180 - 200k</dd>
+							</div>
+						</dl>
+
+						<div class="description">
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Aliquet risus feugiat in ante metus dictum at.</p>
+
+							<p>Enim ut tellus elementum sagittis vitae et leo duis. Pellentesque massa placerat duis ultricies lacus sed turpis. Cursus eget nunc scelerisque viverra mauris in. Facilisi etiam dignissim diam quis enim lobortis scelerisque fermentum dui. Lorem mollis aliquam ut porttitor. Amet porttitor eget dolor morbi non arcu risus quis varius. Eget sit amet tellus cras adipiscing enim eu. At risus viverra adipiscing at in tellus. Turpis massa tincidunt dui ut ornare lectus sit. Ornare arcu odio ut sem nulla pharetra. Mauris augue neque gravida in fermentum. Nisl condimentum id venenatis a condimentum vitae sapien pellentesque habitant. Tincidunt arcu non sodales neque sodales ut. Et ultrices neque ornare aenean euismod elementum. Semper feugiat nibh sed pulvinar proin gravida hendrerit lectus a.</p>
+
+							<p>Leo integer malesuada nunc vel risus commodo viverra maecenas accumsan. Id cursus metus aliquam eleifend. Non enim praesent elementum facilisis leo. Facilisi cras fermentum odio eu feugiat pretium nibh ipsum consequat. Non blandit massa enim nec dui nunc mattis enim. Dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu. Malesuada bibendum arcu vitae elementum curabitur vitae nunc sed velit. Integer enim neque volutpat ac tincidunt vitae semper. Pellentesque eu tincidunt tortor aliquam nulla facilisi cras fermentum.</p>
+						</div>
+					</div>
+
+					<div class="company">
+						<h1 class="title">MegaBig Corp</h1>
+						<h2 class="location">Camp Peary, VA</h2>
+
+						<p class="subtitle">Specializing in proactive third-amendment defense, MegaBig Corp offers offensive cybersecurity solutions to help clients achieve peace of mind and reduce costly business interruptions</p>
+
+						<dl class="specs collapsed" onclick="toggleDetails(this)">
+							<dt>Main tech</dt> <dd>Python, Java, C++</dd>
+							<dt>Industry</dt> <dd>Cybersecurity</dd>
+							<dt>Employees</dt> <dd>1,000</dd>
+							<dt>Intern-to-hire rate</dt> <dd>100%</dd>
+
+							<div>
+								<button type="button" class="icon expand"><ion-icon name="chevron-down-outline"></ion-icon></button>
+
+								<dt>Services</dt> <dd>Security consulting</dd>
+								<dt>Offices</dt> <dd>15 globally</dd>
+								<dt>Age</dt> <dd>244 years</dd>
+							</div>
+						</dl>
+
+						<div class="pictures">
+							<img src="https://source.unsplash.com/uuwA21vmI3o/640x427" alt="Building" />
+							<img src="https://source.unsplash.com/Y-ph0PRiLqk/640x427" alt="Special ops" />
+							<img src="https://source.unsplash.com/eHD8Y1Znfpk/640x427" alt="Table" />
+						</div>
+
+						<div class="description">
+							<p>Founded in 1776, MegaBig is the third oldest lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Aliquet risus feugiat in ante metus dictum at.</p>
+
+							<p>Enim ut tellus elementum sagittis vitae et leo duis. Pellentesque massa placerat duis ultricies lacus sed turpis. Cursus eget nunc scelerisque viverra mauris in. Facilisi etiam dignissim diam quis enim lobortis scelerisque fermentum dui. Lorem mollis aliquam ut porttitor. Amet porttitor eget dolor morbi non arcu risus quis varius. Eget sit amet tellus cras adipiscing enim eu. At risus viverra adipiscing at in tellus. Turpis massa tincidunt dui ut ornare lectus sit. Ornare arcu odio ut sem nulla pharetra. Mauris augue neque gravida in fermentum. Nisl condimentum id venenatis a condimentum vitae sapien pellentesque habitant. Tincidunt arcu non sodales neque sodales ut. Et ultrices neque ornare aenean euismod elementum. Semper feugiat nibh sed pulvinar proin gravida hendrerit lectus a.</p>
+						</div>
+					</div>
+				</main>
+
+				<button type="button" class="btn blue apply" onclick="document.querySelector('.screen.details .apply-modal').classList.add('visible')">Apply Now</button>
+
+				<div class="apply-modal">
+					<header class="app-bar">
+						<h1>Apply</h1>
+
+						<button type="button" class="icon close" onclick="document.querySelector('.screen.details .apply-modal').classList.remove('visible')">
+							<ion-icon name="close-outline"></ion-icon>
+						</button>
+					</header>
+
+					<form class="app-form" autocomplete="off">
+						<p class="info-note">Your profile will be sent with this application</p>
+
+						<div class="section resume">
+							<h3>Resume</h3>
+
+							<div>
+								<span class="error">No resume selected</span>
+
+								<button type="button" class="btn flat blue" onclick="this.innerHTML = 'Change';this.previousElementSibling.innerHTML = 'existing-resume.pdf';this.previousElementSibling.classList.remove('error')">Select</button>
+							</div>
+						</div>
+
+						<h2>Employer Questionnaire</h2>
+
+						<label class="credit material-switch">
+							<input type="checkbox" />
+							<span>I will require sponsorship</span>
+						</label>
+
+						<div class="section app-term">
+							<label for="app-term">Preferred dates</label>
+
+							<select id="app-term" onchange="addSelectChip(this)">
+								<option selected disabled hidden value="initial">Select one to add</option>
+								<option>5/11 - 7/31</option>
+								<option>5/17 - 8/06</option>
+								<option>5/24 - 8/13</option>
+								<option>6/1 - 8/20</option>
+							</select>
+
+							<div class="selected"></div>
+						</div>
+
+						<button type="button" class="btn flat blue">Attach cover letter</button>
+					</form>
+
+					<button type="button" class="btn blue submit" onclick="submitApplication()">Submit Application</button>
+				</div>
+			</div>
+
+			<div class="screen filter">
+				<header class="app-bar">
+					<button type="button" class="icon back" onclick="showScreen('search-results')"><ion-icon name="chevron-back-outline"></ion-icon> Back</button>
+
+					<button type="button" class="btn flat blue" onclick="showScreen('search-results')">Update Results</button>
+				</header>
+
+				<form class="filters" autocomplete="off">
+					<div class="section keywords">
+						<label for="keywords">Keywords</label>
+
+						<input type="text" id="keywords" placeholder="Enter keywords to filter by" />
+					</div>
+
+					<div class="section sort">
+						<label for="sort">Sort by</label>
+
+						<select id="sort">
+							<option>Relevance</option>
+							<option>Distance</option>
+							<option>Commute time</option>
+							<option>Posted date</option>
+							<option>Compensation</option>
+						</select>
+					</div>
+
+					<div class="section function">
+						<label for="function">Job Function</label>
+
+						<input type="text" id="function" placeholder="Start typing..." />
+
+						<ul class="autocomplete">
+							<li>Frontend development</li>
+							<li>Backend web development</li>
+							<li>Embedded</li>
+							<li>Data Analysis</li>
+							<li>IT Support</li>
+						</ul>
+
+						<div class="selected">
+							<span class="selected-chip">Backend web development</span>
+							<span class="selected-chip">Embedded</span>
+							<span class="selected-chip">Data Analysis</span>
+							<span class="selected-chip">IT Support</span>
+						</div>
+					</div>
+
+					<div class="section location">
+						<label for="location">Location</label>
+
+						<input type="text" id="location" placeholder="City, State, or Zip" />
+
+						<ul class="autocomplete">
+							<li>Hollywood, FL</li>
+							<li>Fort Lauderdale, FL</li>
+							<li>Miami, FL</li>
+							<li>Boca Raton, FL</li>
+							<li>Orlando, FL</li>
+						</ul>
+
+						<div class="selected">
+							<span class="selected-chip">Dallas, TX</span>
+							<span class="selected-chip">Fort Lauderdale, FL</span>
+						</div>
+					</div>
+
+					<div class="section commute">
+						<label for="commute">Maximum Commute</label>
+
+						<select id="commute">
+							<option>5 minutes</option>
+							<option>15 minutes</option>
+							<option>30 minutes</option>
+							<option>45 minutes</option>
+							<option>1 hour</option>
+							<option>1.5 hours</option>
+							<option>3 hours</option>
+						</select>
+					</div>
+
+					<div class="section term">
+						<label for="term">Internship Term</label>
+
+						<select id="term" onchange="addSelectChip(this)">
+							<option selected disabled hidden value="initial">Select one to add</option>
+							<option>Summer 2021</option>
+							<option>Fall 2021</option>
+							<option>Spring 2022</option>
+							<option>Summer 2022</option>
+						</select>
+
+						<div class="selected">
+							<span class="selected-chip">Summer 2020</span>
+							<span class="selected-chip">Fall 2020</span>
+						</div>
+					</div>
+
+					<label class="credit material-switch">
+						<input type="checkbox" />
+						<span>Limit to academic credit offered</span>
+					</label>
+
+					<div class="section company-size">
+						<label for="company-size">Company Size</label>
+
+						<select id="company-size" onchange="addSelectChip(this)">
+							<option selected disabled hidden value="initial">Select one to add</option>
+							<option>1 - 5 employees</option>
+							<option>5 - 15 employees</option>
+							<option>15 - 30 employees</option>
+							<option>30 - 50 employees</option>
+							<option>50 - 250 employees</option>
+							<option>250 - 500 employees</option>
+							<option>500+ employees</option>
+						</select>
+
+						<div class="selected">
+							<span class="selected-chip">1 - 5 employees</span>
+							<span class="selected-chip">5 - 15 employees</span>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+
+		<script>
+			// This is all very hacky, but this is just a prototype
+
+			function showScreen(name) {
+				document.querySelector('.screen.visible').classList.remove("visible");
+
+				document.querySelector('.screen.' + name).classList.add("visible");
+			}
+
+			function addSelectChip(sel) {
+				sel.parentElement.querySelector(".selected").innerHTML += `<span class="selected-chip">${sel.selectedOptions[0].innerText.trim().trim()}</span>`;
+
+				sel.value = "initial";
+			}
+
+			function toggleDetails(elm) {
+				if (elm.classList.toggle('collapsed')) {
+					elm.querySelector("button.expand").innerHTML = `<ion-icon name="chevron-down-outline"></ion-icon>`;
+				}
+				else {
+					elm.querySelector("button.expand").innerHTML = `<ion-icon name="chevron-up-outline"></ion-icon>`;
+				}
+			}
+
+			function submitApplication() {
+				let existing = document.querySelector(".screen-container > .toast");
+
+				// Remove any other active toast
+				if (existing) {
+					existing.parentElement.removeChild(existing);
+				}
+
+				let p = document.createElement("p");
+				p.classList.add("toast");
+
+				if (document.querySelector(".screen.details .apply-modal .resume .error")) {
+					p.innerHTML = "Please select a resume before continuing";
+				}
+				else {
+					document.querySelector(".screen.details .apply-modal").classList.remove("visible")
+
+					showScreen("search-results");
+
+					p.innerHTML = "Application successfully submitted";
+				}
+
+				document.querySelector(".screen-container").appendChild(p);
+
+				setTimeout(() => p.parentElement.removeChild(p), 6000);
+			}
+
+			[].forEach.call(document.querySelectorAll("form"), f => f.addEventListener("click", e => {
+				if (!(e.target instanceof HTMLElement)) {
+					return;
+				}
+
+				if (e.target.classList.contains("selected-chip")) {
+					e.target.parentElement.removeChild(e.target);
+				}
+
+				if (e.target.tagName === "LI" && e.target.parentElement.classList.contains("autocomplete")) {
+					e.target.parentElement.parentElement.querySelector(".selected").innerHTML += `<span class="selected-chip">${e.target.innerText.trim()}</span>`;
+				}
+			}));
+
+			const updateCheckbox = (elm, changed) => {
+				if (!(elm instanceof HTMLElement && elm.tagName === "INPUT" && elm.type === "checkbox")) {
+					return;
+				}
+
+				// Matches checkboxes with sublists, propagates changes down
+				if (changed && elm.parentElement.nextElementSibling && elm.parentElement.nextElementSibling.tagName === "UL") {
+					let l = elm.parentElement.nextElementSibling;
+
+					// Check every box
+					[].forEach.call(l.querySelectorAll('input[type="checkbox"]'), sc => {
+						sc.checked = elm.checked;
+						sc.indeterminate = false;
+					});
+				}
+
+				// This is a sublist, propagate changes up and update the parent state
+				if (elm.parentElement.parentElement.parentElement.previousElementSibling.tagName === "LABEL") {
+					let l = elm.parentElement.parentElement.parentElement;
+					let parentCheckbox = l.previousElementSibling.querySelector("input");
+
+					// If every box is checked, check it
+					if ([].every.call(l.querySelectorAll('input[type="checkbox"]'), e => e.checked)) {
+						parentCheckbox.checked = true;
+						parentCheckbox.indeterminate = false;
+					}
+					else if ([].some.call(l.querySelectorAll('input[type="checkbox"]'), e => e.checked)) {
+						parentCheckbox.indeterminate = true;
+						parentCheckbox.checked = false;
+					}
+					else {
+						parentCheckbox.checked = false;
+						parentCheckbox.indeterminate = false;
+					}
+
+					// And propagate the changes up
+					updateCheckbox(parentCheckbox, false);
+				}
+			};
+
+			[].forEach.call(document.querySelectorAll(".onboarding-3, .onboarding-4"), p => {
+				p.addEventListener("change", e => updateCheckbox(e.target, true));
+
+				[].forEach.call(p.querySelectorAll("button.expand"), b => b.addEventListener("click", e => {
+					if (e.target.parentElement.nextElementSibling.classList.toggle("collapsed")) {
+						e.target.innerHTML = `<ion-icon name="chevron-forward-outline"></ion-icon>`;
+					}
+					else {
+						e.target.innerHTML = `<ion-icon name="chevron-down-outline"></ion-icon>`;
+					}
+
+					e.preventDefault();
+					e.stopPropagation();
+					e.target.parentElement.blur();
+				}));
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,1030 @@
+@import url("./switch.css");
+
+*, *:before, *:after {
+	border: 0;
+	margin: 0;
+	padding: 0;
+	outline: 0;
+	box-sizing: border-box;
+	background: transparent;
+}
+
+li {
+	display: block;
+}
+
+body {
+	color: #212121;
+	font-size: 14px;
+	user-select: none;
+	background: #CFD8DC;
+	font-family: Roboto, sans-serif;
+}
+
+.screen-container {
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+	position: relative;
+}
+
+.device {
+	margin: 45px auto 0;
+}
+
+.device-content {
+	position: relative;
+}
+
+.screen {
+	top: 0;
+	left: -100%;
+	bottom: 0;
+	width: 100%;
+	display: flex;
+	overflow: hidden;
+	background: #FFF;
+	flex-flow: column;
+	position: absolute;
+	transition: left .3s ease;
+}
+
+.screen.visible {
+	left: 0;
+}
+
+.screen.visible ~ .screen {
+	left: 100%;
+}
+
+
+/*---------------------------------------------
+	/ Scrollbars
+*/
+::-webkit-scrollbar {
+	width: 8px;
+	height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+	background: rgba(0, 0, 0, .2);
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: rgba(0, 0, 0, .5);
+}
+
+::-webkit-scrollbar-thumb:active {
+	background: rgba(0, 0, 0, .3);
+}
+
+
+
+/*---------------------------------------------
+	/ Buttons
+*/
+.btn {
+	color: #FFF;
+	line-height: 1;
+	font-size: 13px;
+	cursor: pointer;
+	font-weight: 500;
+	padding: 12px 20px;
+	border-radius: 3px;
+	background: #2196F3;
+	vertical-align: top;
+	letter-spacing: .3px;
+	display: inline-block;
+	text-transform: uppercase;
+	font-family: Roboto, sans-serif;
+	transition: background-color,box-shadow .15s ease-in-out;
+}
+
+.btn.disabled,
+.btn.disabled:hover,
+.btn.disabled:focus,
+.btn.disabled:active {
+	color: #FAFAFA;
+	background: #999;
+	box-shadow: none;
+}
+
+.btn:hover,
+.btn:focus {
+	color: #FFF;
+	background: #1E88E5;
+	text-decoration: none;
+	box-shadow: 0 7px 13px 0 rgba(27, 58, 108, 0.11), 0 3px 8px 0 rgba(27, 58, 108, 0.11);
+}
+
+.btn.red { background: #F44336; }
+.btn.red:hover,
+.btn.red:active { background: #E53935; }
+
+.btn.green { background: #4CAF50; }
+.btn.green:hover,
+.btn.green:active { background: #43A047; }
+
+.btn.orange { background: #FF9800; }
+.btn.orange:hover,
+.btn.orange:active { background: #FB8C00; }
+
+.btn.flat {
+	color: #333;
+	font-size: 13px;
+	background: none;
+	box-shadow: none;
+	font-weight: 600;
+	padding: 2px 12px;
+	transition: color .15s;
+	text-transform: uppercase;
+}
+
+.btn.flat:hover {
+	color: #777!important;
+	background: none;
+	box-shadow: none;
+}
+
+.btn.flat.red		{ color: #F44336; }
+.btn.flat.blue		{ color: #2196F3; }
+.btn.flat.green		{ color: #4CAF50; }
+.btn.flat.orange	{ color: #FF9800; }
+
+.toast {
+	position: fixed;
+	bottom: 12px;
+	left: 12px;
+	right: 12px;
+	line-height: 56px;
+	z-index: 2;
+	background: #333;
+	color: rgba(255, 255, 255, 0.87);
+	padding: 0 25px;
+	border-radius: 4px;
+	box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
+	animation: toast-animation 5s ease forwards;
+}
+
+@keyframes toast-animation {
+	0%, 100% {
+		bottom: -65px;
+	}
+
+	10%, 90% {
+		bottom: 12px;
+	}
+}
+
+
+
+/*---------------------------------------------
+	/ App bar
+*/
+.app-bar {
+	z-index: 1;
+	display: flex;
+	flex: 0 0 60px;
+	padding: 0 16px;
+	align-items: center;
+	justify-content: space-between;
+	box-shadow: 0 2px 6px rgba(0,0,0,.2);
+}
+
+.app-bar .logo {
+	height: 45px;
+	color: #0082FB;
+}
+
+.app-bar h1 {
+	font-size: 20px;
+	font-weight: 500;
+}
+
+.app-bar button.icon,
+.welcome button.icon {
+	outline: 0;
+	border: none;
+	padding: 8px;
+	height: 40px;
+	display: flex;
+	cursor: pointer;
+	font-size: 15px;
+	background: none;
+	font-weight: 500;
+	line-height: 24px;
+	align-content: center;
+	font-family: Roboto, sans-serif;
+}
+
+.app-bar button.icon ion-icon,
+.welcome button.icon ion-icon {
+	font-size: 24px;
+}
+
+.app-bar button.icon:hover,
+.welcome button.icon:hover {
+	opacity: 0.5;
+}
+
+
+
+
+
+/*---------------------------------------------
+	/ Nav menu
+*/
+nav.menu {
+	position: fixed;
+	top: 0;
+	left: -185px;
+	bottom: 0;
+	z-index: 9;
+	color: #FFF;
+	background: #1C253D;
+	padding: 50px 0 30px;
+	width: 185px;
+	visibility: hidden;
+	opacity: 0;
+	transition: all 0.3s;
+	box-shadow: 0 2px 6px rgba(0,0,0,.2);
+}
+
+nav.menu.visible {
+	visibility: visible;
+	left: 0;
+	opacity: 1;
+}
+
+nav.menu.visible:after {
+	position: absolute;
+	left: 100%;
+	width: 100vw;
+	top: 0;
+	bottom: 0;
+	content: "";
+	background: rgba(0, 0, 0, 0.3);
+}
+
+nav.menu span {
+	display: block;
+	padding: 14px 24px;
+	font-size: 13px;
+	letter-spacing: .2px;
+	cursor: pointer;
+}
+
+nav.menu span.active {
+	background: #5869F0;
+}
+
+nav.menu span:not(.active):hover {
+	background: rgba(0, 0, 0, 0.3);
+}
+
+
+
+
+
+/*---------------------------------------------
+	/ Form
+*/
+form {
+	overflow: auto;
+	padding-top: 6px;
+}
+
+form .material-switch {
+	margin: 10px 15px;
+	display: block;
+}
+
+form .section {
+	padding: 10px 15px;
+	position: relative;
+}
+
+form .section label, form .section h3 {
+	font-weight: 700;
+	color: #444;
+	display: block;
+	margin-bottom: 6px;
+	font-size: 14px;
+}
+
+form .section input, form .section select {
+	width: 100%;
+	padding: 8px 10px 6px;
+	font-family: Roboto, sans-serif;
+	border-bottom: 1px solid #666;
+	transition: all .15s;
+}
+
+form .section input:focus, form .section select:focus,
+form .section input:active, form .section select:active {
+	border-color: #2196F3;
+	border-width: 2px;
+	margin-bottom: -1px;
+	background: rgba(0, 0, 0, 0.05);
+}
+
+form .section .autocomplete {
+	position: absolute;
+	background: #FFF;
+	left: 0;
+	right: 0;
+	top: 65px;
+	z-index: 1;
+	max-height: 0;
+	overflow: hidden;
+	box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14);
+	transition: all .3s;
+	transition-delay: 0.075s; /* Fixes event listener issues */
+}
+
+form .section input:focus ~ .autocomplete {
+	visibility: visible;
+	max-height: 250px;
+}
+
+form .section .autocomplete li {
+	padding: 12px 16px;
+	cursor: pointer;
+}
+
+form .section .autocomplete li:hover {
+	background: #F0F0F0;
+}
+
+form .section .selected {
+	margin-top: 10px;
+}
+
+form .section .selected span {
+	cursor: pointer;
+	padding: 0 12px;
+	font-size: 13px;
+	font-weight: 500;
+	background: rgba(0, 0, 0, .05);
+	margin: 4px 2px;
+	line-height: 26px;
+	display: inline-block;
+	border-radius: 13px;
+	border: 1px inset rgba(0, 0, 0, 0.1);
+}
+
+form .section .selected span:after {
+	width: 16px;
+	vertical-align: sub;
+	height: 16px;
+	margin-left: 3px;
+	margin-right: -6px;
+	display: inline-block;
+	content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M289.94,256l95-95A24,24,0,0,0,351,127l-95,95-95-95A24,24,0,0,0,127,161l95,95-95,95A24,24,0,1,0,161,385l95-95,95,95A24,24,0,0,0,385,351Z"/></svg>');
+}
+
+
+
+
+
+/*---------------------------------------------
+	/ Start
+*/
+.screen.start {
+	background: #FAFAFA;
+	display: flex;
+	padding: 15% 25px 0;
+}
+
+.start h1 {
+	font-size: 40px;
+	font-weight: 500;
+}
+
+.start p {
+	margin: 15px 0 40px;
+	text-align: left;
+	line-height: 1.7;
+}
+
+.start .btn {
+	margin: 0 0 15px;
+	font-size: 16px;
+	padding: 18px 30px;
+	font-weight: 700;
+}
+
+
+
+
+
+
+
+/*---------------------------------------------
+	/ Welcome
+*/
+.screen.welcome .logo {
+	color: #FFF;
+	width: 75%;
+	margin: 0 auto 30px;
+	flex: 1;
+}
+
+.screen.welcome:after {
+	content: "Infinite Internships";
+	position: absolute;
+	top: 280px;
+	width: 100%;
+	left: 0;
+	font-size: 30px;
+	text-align: center;
+	font-weight: 300;
+}
+
+.screen.welcome button.skip {
+	color: #FFF;
+	position: absolute;
+	top: 8px;
+	right: 8px;
+}
+
+.screen.welcome {
+	background: #0030df;
+	color: #FFF;
+	display: flex;
+	padding: 0 25px;
+}
+
+.welcome h1 {
+	font-size: 40px;
+	font-weight: 500;
+}
+
+.welcome p {
+	margin: 20px 0 45px;
+	text-align: left;
+	line-height: 1.7;
+	color: rgba(255, 255, 255, 0.75);
+}
+
+.welcome .btn {
+	background: #FFF;
+	color: #212121;
+	margin: 0 0 35px;
+	font-size: 16px;
+	padding: 18px 30px;
+	font-weight: 700;
+}
+
+.welcome .btn:hover, .welcome .btn:active {
+	background: #F5F5F5;
+}
+
+
+
+
+
+/*---------------------------------------------
+	/ Onboarding
+*/
+.onboarding .app-bar {
+	color: #FFF;
+	padding: 0 4px;
+	background: #0030df;
+}
+
+.onboarding .app-bar button {
+	color: inherit;
+}
+
+.onboarding .app-bar button.icon:hover {
+	opacity: 0.85;
+}
+
+.onboarding form {
+	flex: 1;
+}
+
+.onboarding .gpa .why {
+	float: right;
+	color: #2196F3;
+	font-size: 13px;
+	cursor: pointer;
+}
+
+.onboarding p.progress {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	padding-bottom: 8px;
+	text-align: center;
+	line-height: 24px;
+	background: rgba(255, 255, 255, 0.75);
+}
+
+.onboarding p.progress:after {
+	content: "";
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	left: 0;
+	height: 6px;
+	border-left: solid #39F;
+	border-left-width: 25vw;
+	background: #BBB;
+}
+
+.onboarding-2 p.progress:after { border-left-width: 50vw; }
+.onboarding-3 p.progress:after { border-left-width: 75vw; }
+.onboarding-4 p.progress:after { border-left-width: 100vw; }
+
+.onboarding .option-list:before {
+	color: #666;
+	margin: 15px;
+	display: block;
+}
+
+.onboarding-3 .option-list:before {
+	content: "Select what you'd like to be doing in an internship";
+}
+
+.onboarding-4 .option-list:before {
+	content: "Select the industries you'd like to work in";
+}
+
+.onboarding .option-list {
+	flex: 1;
+	overflow: auto;
+	padding-bottom: 32px;
+}
+
+.onboarding .option-list > li:last-of-type {
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.onboarding .option-list label {
+	padding: 15px 15px 15px 20px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.onboarding .option-list button {
+	font-size: 24px;
+	height: 24px;
+	cursor: pointer;
+}
+
+.onboarding .option-list button ion-icon {
+	pointer-events: none;
+}
+
+.onboarding .option-list span {
+	flex: 1;
+}
+
+.onboarding .option-list li {
+	border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.onboarding .option-list li ul li > label {
+	border-left: 20px solid transparent;
+}
+
+.onboarding .option-list li ul {
+	background: #F5F5F5;
+	box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.1);
+	overflow: hidden;
+}
+
+.onboarding .option-list li ul.collapsed {
+	height: 0;
+}
+
+.onboarding .option-list li ul li ul {
+	background: #E5E5E5;
+}
+
+.onboarding .option-list li ul li ul li > label {
+	border-left: 40px solid transparent;
+}
+
+
+
+
+
+/*---------------------------------------------
+	/ Results
+*/
+ul.results {
+	margin: 0;
+	padding: 4px 0 0;
+	font-size: 13px;
+	line-height: 1.6;
+	overflow: auto;
+	background: #FAFAFA;
+}
+
+.results .title {
+	margin: 0;
+	font-size: 14px;
+}
+
+.results .pay {
+	color: #4CAF50;
+	font-weight: 500;
+}
+
+.results li {
+	display: block;
+	cursor: pointer;
+	padding: 10px 15px;
+	border-top: 1px solid rgba(0, 0, 0, 0.1);
+	transition: background .15s ease;
+}
+
+.results li:first-of-type {
+	border-top: none;
+}
+
+.results li:hover {
+	background: rgba(0, 0, 0, 0.05);
+}
+
+.results li > div {
+	display: flex;
+	justify-content: space-between;
+}
+
+.results .company {
+	margin: 0;
+	font-size: 13px;
+	font-weight: 400;
+}
+
+.results .location, .results .term {
+	color: #666;
+}
+
+
+
+
+
+/*---------------------------------------------
+	/ Internship Details
+*/
+.details .app-bar .back {
+	margin-left: -8px;
+}
+
+.details .app-bar .save.saved {
+	color: #D81B60;
+}
+
+.details .app-bar button.icon.save {
+	position: relative;
+	opacity: 1;
+}
+
+button.icon.save:after {
+	color: #D81B60;
+	content: "Unsaved";
+	position: absolute;
+	top: calc(100% - 13px);
+	width: 60px;
+	left: -10px;
+	text-align: center;
+	font-weight: 400;
+	font-size: 12px;
+	pointer-events: none;
+	animation: unsave-toast 1.5s forwards; /* This actually plays on load, but the screen is hidden */
+}
+
+button.icon.save.saved:after {
+	content: "Saved";
+	animation: save-toast 1.5s forwards;
+}
+
+@keyframes save-toast {
+	0%, 50% {
+		opacity: 1;
+		top: calc(100% - 14px);
+	}
+
+	100% {
+		opacity: 0;
+		top: 100%;
+	}
+}
+
+/* Copied to force animation replay */
+@keyframes unsave-toast {
+	0%, 50% {
+		opacity: 1;
+		top: calc(100% - 14px);
+	}
+
+	100% {
+		opacity: 0;
+		top: 100%;
+	}
+}
+
+.details .tabs {
+	display: inline-flex;
+	text-align: center;
+	/* background: #F5F5F5; */
+	overflow: hidden;
+	border-radius: 20px;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.details .tabs span {
+	flex: 1;
+	padding: 8px 16px;
+	text-transform: uppercase;
+	font-weight: 500;
+	font-size: 13px;
+	cursor: pointer;
+	border-radius: inherit;
+}
+
+.details:not(.company-visible) .tabs span.internship,
+.details.company-visible .tabs span.company {
+	--color: 30, 136, 229;
+	color: rgb(var(--color));
+	background: rgba(var(--color), 0.15);
+}
+
+.details .tabs span:hover,
+.details .tabs span:active {
+	background: rgba(0, 0, 0, 0.05);
+}
+
+.details main {
+	flex: 1 1 100%;
+	overflow: hidden;
+	position: relative;
+}
+
+.details main > div {
+	padding: 15px;
+	overflow: auto;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 100%;
+	transition: all 0.3s ease;
+}
+
+.details main > .internship {
+	right: 0;
+}
+
+.details main > .company {
+	left: 100%;
+}
+
+.details.company-visible main > .company {
+	left: 0;
+}
+
+.details.company-visible main > .internship {
+	right: 100%;
+}
+
+.details .title {
+	font-size: 20px;
+	font-weight: 500;
+	line-height: 1.4;
+}
+
+.details .location {
+	color: #666;
+	font-weight: 400;
+	font-size: 14px;
+}
+
+.details .subtitle {
+	line-height: 1.6;
+	margin: 12px 0;
+}
+
+.details .subtitle {
+	line-height: 1.6;
+	/* font-size: 14px; */
+}
+
+.details .tags {
+	margin: 16px 0;
+	display: flex;
+	justify-content: space-around;
+}
+
+.details .tags span {
+	--color: 34, 34, 34;
+	padding: 8px 16px;
+	border-radius: 4px;
+	font-weight: 500;
+	color: rgb(var(--color));
+	background: rgba(var(--color), 0.15);
+}
+
+.details .tags .pay {
+	--color: 67, 160, 71;
+}
+
+.details .tags .type {
+	--color: 94, 53, 177;
+}
+
+.details .tags .duration {
+	--color: 244, 81, 30;
+}
+
+
+.details dl.specs {
+	background: #F5F5F5;
+	margin: 0 -15px;
+	padding: 10px 20px;
+	display: flex;
+	flex-flow: row wrap;
+	cursor: pointer;
+	justify-content: space-between;
+	line-height: 1.7;
+}
+
+.details .specs dt {
+	flex: 1 1 50%;
+	font-weight: 500;
+}
+
+.details .specs dd {
+	flex: 1 1 50%;
+	text-align: right;
+}
+
+.details .specs > div {
+	flex: 1 0 100%;
+	display: inherit;
+	flex-flow: inherit;
+	overflow: hidden;
+	max-height: 95px;
+	transition: max-height .3s ease;
+}
+
+.details .specs.collapsed > div {
+	max-height: 18px;
+}
+
+.details .specs button {
+	flex: 1 0 100%;
+	height: 24px;
+	font-size: 24px;
+	margin: -2px 0;
+	cursor: pointer;
+}
+
+.details .pictures {
+	margin: 0 -15px;
+	display: flex;
+	flex-flow: row;
+	overflow: auto;
+	height: 150px;
+	border: solid rgba(0, 0, 0, 0.2);
+	border-width: 1px 0;
+}
+
+.details .pictures::-webkit-scrollbar {
+	height: 0;
+}
+
+.details .pictures img {
+	height: 100%;
+	margin-right: 2px;
+}
+
+.details .description {
+	margin: 15px 5px;
+	line-height: 1.6;
+}
+
+.details .description p {
+	margin-bottom: 10px;
+}
+
+.details button.apply {
+	border-radius: 0;
+	padding: 20px 30px;
+	font-size: 16px;
+	box-shadow: 0 -1px 3px rgba(0,0,0,.15);
+}
+
+
+
+
+
+/*---------------------------------------------
+	/ Details / Apply
+*/
+.details .apply-modal {
+	position: fixed;
+	top: 100%;
+	height: 100vh;
+	left: 0;
+	right: 0;
+	background: #FFF;
+	z-index: 1;
+	display: flex;
+	flex-flow: column;
+	transition: top .3s ease;
+}
+
+.details .apply-modal.visible {
+	top: 0;
+}
+
+.details .apply-modal .app-bar {
+	padding-left: 25px;
+	/* box-shadow: none; */
+	/* border-bottom: 1px solid rgba(0, 0, 0, 0.1); */
+}
+
+.details .apply-modal form {
+	padding: 20px;
+}
+
+.details .apply-modal form p {
+	margin-bottom: 15px;
+	line-height: 1.6;
+}
+
+.details .apply-modal form .section {
+	padding: 10px 8px;
+}
+
+.details .apply-modal form .letter {
+	padding: 2px 0;
+	margin: 15px 0 25px;
+}
+
+.details .apply-modal button.submit {
+	width: 80%;
+	margin: 20px auto;
+	padding: 20px 35px;
+	display: block;
+}
+
+.details .apply-modal form .material-switch {
+	margin: 10px 8px;
+}
+
+.details .apply-modal form p.info-note {
+	padding: 10px 16px;
+	border: 1px solid rgba(0, 0, 0, 0.05);
+	margin: -20px -20px 15px;
+	background: rgba(30, 136, 229, 0.3);
+	font-weight: 500;
+}
+
+.details .apply-modal .resume div {
+	display: flex;
+	margin-top: 12px;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.details .apply-modal form h2 {
+	font-size: 14px;
+	margin: 25px 0 15px;
+	font-weight: 500;
+	color: #666;
+	text-transform: uppercase;
+}
+
+.details .apply-modal .resume div span {
+	padding: 0 16px;
+	line-height: 32px;
+	border-radius: 18px;
+	font-weight: 500;
+	background: #F5F5F5;
+	border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.details .apply-modal .resume div span.error {
+	background: rgba(229, 57, 53, 0.15);
+	color: #E53935;
+}
+
+
+
+
+/*---------------------------------------------
+	/ Filter
+*/
+.filter .app-bar {
+	padding-left: 6px;
+	box-shadow: none;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+}
