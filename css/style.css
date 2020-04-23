@@ -705,13 +705,21 @@ ul.internship-list {
 
 .internship-list .title {
 	margin: 0;
-	font-size: 14px;
+	font-size: 15px;
 }
 
 .internship-list .pay,
 .internship-list .date {
 	color: #4CAF50;
 	font-weight: 500;
+}
+
+.internship-list .pay.unpaid {
+	color: #9C27B0;
+}
+
+.internship-list .pay.credit {
+	color: #448AFF;
 }
 
 .internship-list li {
@@ -825,7 +833,7 @@ ul.internship-list {
 	line-height: 1.4;
 }
 
-.details .location {
+.details .company, .details .location {
 	color: #666;
 	font-weight: 400;
 	font-size: 14px;
