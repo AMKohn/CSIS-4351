@@ -46,11 +46,20 @@ body {
 	background: #FFF;
 	flex-flow: column;
 	position: absolute;
-	transition: left .3s ease;
+	visibility: hidden;
+	/*
+		Transition visibility with a delay so the following situation doesn't ruin the transition:
+		A.visible B C D E
+		E becomes visible
+		B, C, and D transition to the left with E and flash across the screen
+	 */
+	transition: left .3s ease, visibility 0s .3s;
 }
 
 .screen.visible {
 	left: 0;
+	visibility: visible;
+	transition: left .3s ease, visibility 0s 0s;
 }
 
 .screen.visible ~ .screen {
@@ -64,9 +73,15 @@ body {
 ::-webkit-scrollbar {
 	width: 8px;
 	height: 8px;
+	display: none;
+}
+
+:hover::-webkit-scrollbar {
+	display: initial;
 }
 
 ::-webkit-scrollbar-thumb {
+	border-radius: 8px;
 	background: rgba(0, 0, 0, .2);
 }
 
@@ -201,32 +216,6 @@ body {
 	font-weight: 500;
 }
 
-.app-bar button.icon,
-.welcome button.icon {
-	outline: 0;
-	border: none;
-	padding: 8px;
-	height: 40px;
-	display: flex;
-	cursor: pointer;
-	font-size: 15px;
-	background: none;
-	font-weight: 500;
-	line-height: 24px;
-	align-content: center;
-	font-family: Roboto, sans-serif;
-}
-
-.app-bar button.icon ion-icon,
-.welcome button.icon ion-icon {
-	font-size: 24px;
-}
-
-.app-bar button.icon:hover,
-.welcome button.icon:hover {
-	opacity: 0.5;
-}
-
 
 
 
@@ -287,10 +276,95 @@ nav.menu span:not(.active):hover {
 
 
 /*---------------------------------------------
+	/ Icon Buttons
+*/
+button.icon {
+	outline: 0;
+	border: none;
+	padding: 8px;
+	min-width: 40px;
+	height: 40px;
+	display: flex;
+	cursor: pointer;
+	font-size: 15px;
+	background: none;
+	font-weight: 500;
+	line-height: 24px;
+	align-content: center;
+	font-family: Roboto, sans-serif;
+}
+
+button.icon ion-icon {
+	font-size: 24px;
+}
+
+button.icon:hover {
+	opacity: 0.5;
+}
+
+button.icon.save {
+	position: relative;
+	opacity: 1;
+}
+
+button.icon.save.saved {
+	color: #D81B60;
+}
+
+button.icon.save:after {
+	color: #D81B60;
+	content: "Unsaved";
+	position: absolute;
+	top: calc(100% - 13px);
+	width: 60px;
+	left: -10px;
+	text-align: center;
+	font-weight: 400;
+	font-size: 12px;
+	pointer-events: none;
+	animation: unsave-toast 1.5s forwards; /* This actually plays on load, but the screen is hidden */
+}
+
+button.icon.save.saved:after {
+	content: "Saved";
+	animation: save-toast 1.5s forwards;
+}
+
+@keyframes save-toast {
+	0%, 50% {
+		opacity: 1;
+		top: calc(100% - 14px);
+	}
+
+	100% {
+		opacity: 0;
+		top: 100%;
+	}
+}
+
+/* Copied to force animation replay */
+@keyframes unsave-toast {
+	0%, 50% {
+		opacity: 1;
+		top: calc(100% - 14px);
+	}
+
+	100% {
+		opacity: 0;
+		top: 100%;
+	}
+}
+
+
+
+
+
+/*---------------------------------------------
 	/ Form
 */
 form {
 	overflow: auto;
+	overflow: overlay;
 	padding-top: 6px;
 }
 
@@ -556,6 +630,7 @@ form .section .selected span:after {
 .onboarding .option-list {
 	flex: 1;
 	overflow: auto;
+	overflow: overlay;
 	padding-bottom: 32px;
 }
 
@@ -615,55 +690,58 @@ form .section .selected span:after {
 
 
 /*---------------------------------------------
-	/ Results
+	/ Internship List
 */
-ul.results {
+ul.internship-list {
 	margin: 0;
 	padding: 4px 0 0;
 	font-size: 13px;
 	line-height: 1.6;
 	overflow: auto;
+	overflow: overlay;
 	background: #FAFAFA;
+	flex: 1;
 }
 
-.results .title {
+.internship-list .title {
 	margin: 0;
 	font-size: 14px;
 }
 
-.results .pay {
+.internship-list .pay,
+.internship-list .date {
 	color: #4CAF50;
 	font-weight: 500;
 }
 
-.results li {
+.internship-list li {
 	display: block;
 	cursor: pointer;
-	padding: 10px 15px;
+	padding: 12px 18px;
 	border-top: 1px solid rgba(0, 0, 0, 0.1);
 	transition: background .15s ease;
 }
 
-.results li:first-of-type {
+.internship-list li:first-of-type {
 	border-top: none;
 }
 
-.results li:hover {
+.internship-list li:hover {
 	background: rgba(0, 0, 0, 0.05);
 }
 
-.results li > div {
+.internship-list li > div {
 	display: flex;
 	justify-content: space-between;
 }
 
-.results .company {
+.internship-list .company {
 	margin: 0;
 	font-size: 13px;
 	font-weight: 400;
 }
 
-.results .location, .results .term {
+.internship-list .location, .internship-list .term {
 	color: #666;
 }
 
@@ -678,63 +756,9 @@ ul.results {
 	margin-left: -8px;
 }
 
-.details .app-bar .save.saved {
-	color: #D81B60;
-}
-
-.details .app-bar button.icon.save {
-	position: relative;
-	opacity: 1;
-}
-
-button.icon.save:after {
-	color: #D81B60;
-	content: "Unsaved";
-	position: absolute;
-	top: calc(100% - 13px);
-	width: 60px;
-	left: -10px;
-	text-align: center;
-	font-weight: 400;
-	font-size: 12px;
-	pointer-events: none;
-	animation: unsave-toast 1.5s forwards; /* This actually plays on load, but the screen is hidden */
-}
-
-button.icon.save.saved:after {
-	content: "Saved";
-	animation: save-toast 1.5s forwards;
-}
-
-@keyframes save-toast {
-	0%, 50% {
-		opacity: 1;
-		top: calc(100% - 14px);
-	}
-
-	100% {
-		opacity: 0;
-		top: 100%;
-	}
-}
-
-/* Copied to force animation replay */
-@keyframes unsave-toast {
-	0%, 50% {
-		opacity: 1;
-		top: calc(100% - 14px);
-	}
-
-	100% {
-		opacity: 0;
-		top: 100%;
-	}
-}
-
 .details .tabs {
 	display: inline-flex;
 	text-align: center;
-	/* background: #F5F5F5; */
 	overflow: hidden;
 	border-radius: 20px;
 	border: 1px solid rgba(0, 0, 0, 0.1);
@@ -771,6 +795,7 @@ button.icon.save.saved:after {
 .details main > div {
 	padding: 15px;
 	overflow: auto;
+	overflow: overlay;
 	position: absolute;
 	top: 0;
 	bottom: 0;
@@ -891,6 +916,7 @@ button.icon.save.saved:after {
 	display: flex;
 	flex-flow: row;
 	overflow: auto;
+	overflow: overlay;
 	height: 150px;
 	border: solid rgba(0, 0, 0, 0.2);
 	border-width: 1px 0;
@@ -947,8 +973,6 @@ button.icon.save.saved:after {
 
 .details .apply-modal .app-bar {
 	padding-left: 25px;
-	/* box-shadow: none; */
-	/* border-bottom: 1px solid rgba(0, 0, 0, 0.1); */
 }
 
 .details .apply-modal form {
@@ -1015,6 +1039,23 @@ button.icon.save.saved:after {
 .details .apply-modal .resume div span.error {
 	background: rgba(229, 57, 53, 0.15);
 	color: #E53935;
+}
+
+
+
+
+/*---------------------------------------------
+	/ Saved
+*/
+.saved .internship-list li {
+	display: flex;
+	padding-right: 12px;
+	align-items: center;
+}
+
+.saved .internship-list li > div {
+	display: block;
+	flex: 1;
 }
 
 
