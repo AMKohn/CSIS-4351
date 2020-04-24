@@ -893,7 +893,7 @@
 				</header>
 
 				<ul class="internship-list">
-					<li onclick="showInternship(0)">
+					<li onclick="showInternship(0, false, true, 'Today')">
 						<div>
 							<h2 class="title">Embedded App Development</h2>
 
@@ -906,7 +906,7 @@
 						</div>
 					</li>
 
-					<li onclick="showInternship(1)">
+					<li onclick="showInternship(1, false, true, 'Today')">
 						<div>
 							<h2 class="title">Communications Integrations</h2>
 
@@ -919,7 +919,7 @@
 						</div>
 					</li>
 
-					<li onclick="showInternship(2)">
+					<li onclick="showInternship(2, false, true, 'Yesterday')">
 						<div>
 							<h2 class="title">Investment Market Research</h2>
 
@@ -932,7 +932,7 @@
 						</div>
 					</li>
 
-					<li onclick="showInternship(3)">
+					<li onclick="showInternship(3, false, true, 'Sunday')">
 						<div>
 							<h2 class="title">IT Support</h2>
 
@@ -945,7 +945,7 @@
 						</div>
 					</li>
 
-					<li onclick="showInternship(4)">
+					<li onclick="showInternship(4, false, true, 'April 15th')">
 						<div>
 							<h2 class="title">RF Component Design</h2>
 
@@ -958,7 +958,7 @@
 						</div>
 					</li>
 
-					<li onclick="showInternship(5)">
+					<li onclick="showInternship(5, false, false, '12/8/19')">
 						<div>
 							<h2 class="title">Marketing Graphic Design</h2>
 
@@ -971,7 +971,7 @@
 						</div>
 					</li>
 
-					<li onclick="showInternship(6)">
+					<li onclick="showInternship(6, false, false, '12/8/19')">
 						<div>
 							<h2 class="title">iOS App Development</h2>
 
@@ -984,7 +984,7 @@
 						</div>
 					</li>
 
-					<li onclick="showInternship(7)">
+					<li onclick="showInternship(7, false, false, '12/8/19')">
 						<div>
 							<h2 class="title">Engineering Project Management</h2>
 
@@ -1423,8 +1423,9 @@
 				["IT Management", "Ray Dass Test Prep", "Unpaid", "Cooper City, FL", "Fall 2020", "K-12 Education"]
 			];
 
-			function showInternship(idx, saved) {
+			function showInternship(idx, saved, applyDisabled, applyText) {
 				saved = !!saved;
+				applyDisabled = !!applyDisabled;
 
 				let getElm = selector => document.querySelector(".screen.details " + selector);
 
@@ -1440,6 +1441,19 @@
 
 				s.classList.toggle("saved", saved);
 				s.firstElementChild.setAttribute("name", saved ? "heart" : "heart-outline");
+
+				let b = getElm(".btn.apply");
+
+				if (applyDisabled) {
+					b.setAttribute("class", "btn apply disabled");
+					b.setAttribute("onclick", "");
+				}
+				else {
+					b.setAttribute("class", "btn blue apply");
+					b.setAttribute("onclick", "document.querySelector('.screen.details .apply-modal').classList.add('visible')");
+				}
+
+				b.innerText = applyText ? "Applied " + applyText : "Apply Now";
 
 				showScreen("details");
 			}
