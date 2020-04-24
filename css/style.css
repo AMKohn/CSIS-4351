@@ -369,12 +369,12 @@ form {
 }
 
 form .material-switch {
-	margin: 10px 15px;
+	margin: 12px 20px;
 	display: block;
 }
 
 form .section {
-	padding: 10px 15px;
+	padding: 12px 20px;
 	position: relative;
 }
 
@@ -456,6 +456,28 @@ form .section .selected span:after {
 	display: inline-block;
 	content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M289.94,256l95-95A24,24,0,0,0,351,127l-95,95-95-95A24,24,0,0,0,127,161l95,95-95,95A24,24,0,1,0,161,385l95-95,95,95A24,24,0,0,0,385,351Z"/></svg>');
 }
+
+
+
+
+
+/*---------------------------------------------
+	/ Tags
+*/
+.tags span {
+	font-weight: 500;
+	border-radius: 4px;
+	--color: 67, 160, 71;
+	color: rgb(var(--color));
+	background: rgba(var(--color), 0.15);
+}
+
+.tags .type { --color: 94, 53, 177; }
+.tags .type.part { --color: 239, 108, 0; }
+.tags .term { --color: 197, 17, 98; }
+.tags .term.fall { --color: 0, 137, 123; }
+.tags .pay.unpaid { --color: 84, 110, 122; }
+.tags .pay.credit { --color: 25, 118, 210; }
 
 
 
@@ -705,21 +727,35 @@ ul.internship-list {
 
 .internship-list .title {
 	margin: 0;
-	font-size: 15px;
+	font-size: 18px;
 }
 
-.internship-list .pay,
+.internship-list .title-wrap {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.internship-list .title-wrap .save {
+	margin: -8px;
+}
+
 .internship-list .date {
 	color: #4CAF50;
 	font-weight: 500;
 }
 
-.internship-list .pay.unpaid {
-	color: #9C27B0;
+.internship-list .tags {
+	margin: 0 -3px;
 }
 
-.internship-list .pay.credit {
-	color: #448AFF;
+.internship-list .tags span {
+	padding: 0 12px;
+	margin: 6px 3px 0;
+	line-height: 26px;
+	font-size: 13px;
+	display: inline-block;
+	border: 1px solid rgba(var(--color), 0.1);
 }
 
 .internship-list li {
@@ -728,6 +764,7 @@ ul.internship-list {
 	padding: 12px 18px;
 	border-top: 1px solid rgba(0, 0, 0, 0.1);
 	transition: background .15s ease;
+	font-size: 14px;
 }
 
 .internship-list li:first-of-type {
@@ -738,18 +775,15 @@ ul.internship-list {
 	background: rgba(0, 0, 0, 0.05);
 }
 
-.internship-list li > div {
-	display: flex;
-	justify-content: space-between;
-}
 
 .internship-list .company {
 	margin: 0;
-	font-size: 13px;
-	font-weight: 400;
+	font-size: inherit;
+	font-weight: 500;
+	display: inline-block;
 }
 
-.internship-list .location, .internship-list .term {
+.internship-list .location {
 	color: #666;
 }
 
@@ -833,7 +867,7 @@ ul.internship-list {
 	line-height: 1.4;
 }
 
-.details .company, .details .location {
+.details h2.company, .details h2.location {
 	color: #666;
 	font-weight: 400;
 	font-size: 14px;
@@ -846,7 +880,6 @@ ul.internship-list {
 
 .details .subtitle {
 	line-height: 1.6;
-	/* font-size: 14px; */
 }
 
 .details .tags {
@@ -856,26 +889,8 @@ ul.internship-list {
 }
 
 .details .tags span {
-	--color: 34, 34, 34;
 	padding: 8px 16px;
-	border-radius: 4px;
-	font-weight: 500;
-	color: rgb(var(--color));
-	background: rgba(var(--color), 0.15);
 }
-
-.details .tags .pay {
-	--color: 67, 160, 71;
-}
-
-.details .tags .type {
-	--color: 94, 53, 177;
-}
-
-.details .tags .duration {
-	--color: 244, 81, 30;
-}
-
 
 .details dl.specs {
 	background: #F5F5F5;
@@ -1053,8 +1068,23 @@ ul.internship-list {
 
 
 /*---------------------------------------------
-	/ Saved
+	/ Applications & Saved
 */
+.saved .internship-list .title,
+.applications .internship-list .title {
+	font-size: 16px;
+}
+
+.applications .internship-list li > div {
+	display: flex;
+	justify-content: space-between;
+}
+
+.saved .internship-list .company,
+.applications .internship-list .company {
+	font-weight: 400;
+}
+
 .saved .internship-list li {
 	display: flex;
 	padding-right: 12px;
@@ -1062,7 +1092,6 @@ ul.internship-list {
 }
 
 .saved .internship-list li > div {
-	display: block;
 	flex: 1;
 }
 
