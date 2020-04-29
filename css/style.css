@@ -168,14 +168,14 @@ body {
 
 .toast {
 	position: fixed;
-	bottom: 12px;
+	top: calc(100% + 15px);
 	left: 12px;
 	right: 12px;
-	line-height: 56px;
+	line-height: 26px;
 	z-index: 2;
 	background: #333;
 	color: rgba(255, 255, 255, 0.87);
-	padding: 0 25px;
+	padding: 15px 25px;
 	border-radius: 4px;
 	box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
 	animation: toast-animation 5s ease forwards;
@@ -183,11 +183,11 @@ body {
 
 @keyframes toast-animation {
 	0%, 100% {
-		bottom: -65px;
+		transform: translateY(0);
 	}
 
 	10%, 90% {
-		bottom: 12px;
+		transform: translateY(calc(-100% - 15px - 12px));
 	}
 }
 
@@ -705,6 +705,29 @@ form .section .selected span:after {
 
 .onboarding .option-list li ul li ul li > label {
 	border-left: 40px solid transparent;
+}
+
+
+
+
+
+/*---------------------------------------------
+	/ Placeholder screens
+*/
+.screen.placeholder main {
+	flex: 1;
+	padding: 15px;
+	overflow: overlay;
+}
+
+.screen.placeholder p {
+	margin-bottom: 1em;
+}
+
+.screen.placeholder li {
+	margin-left: 2em;
+	display: list-item;
+	padding-bottom: .5em;
 }
 
 

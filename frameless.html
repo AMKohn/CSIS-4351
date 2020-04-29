@@ -18,12 +18,13 @@
 	<body>
 		<div class="screen-container">
 			<nav class="menu" id="nav-menu">
-				<span data-page="results">Home</span>
-				<span>Profile</span>
-				<span data-page="applications">My applications</span>
-				<span data-page="saved">Saved internships</span>
-				<span>Settings</span>
-				<span>Help</span>
+				<span data-screen="results">Home</span>
+				<span data-screen="profile">Profile</span>
+				<span data-screen="applications">Applications</span>
+				<span data-screen="saved">Saved internships</span>
+				<span data-screen="searches">Searches</span>
+				<span data-screen="settings">App settings</span>
+				<span data-screen="help">Help</span>
 			</nav>
 
 			<div class="screen start visible">
@@ -33,7 +34,7 @@
 
 				<p>Avi Kohn<br>Khalad Mahabub<br>Abdul Sarker</p>
 
-				<p>Please select a starting point</p>
+				<p>Please choose whether you'd like to see the user experience when the app is first run after installation or when it's launched later:</p>
 
 				<button type="button" class="btn blue" onclick="showScreen('welcome')">First run</button>
 
@@ -41,7 +42,7 @@
 			</div>
 
 			<div class="screen welcome">
-				<button type="button" class="icon skip" onclick="showScreen('results')">Skip <ion-icon name="chevron-forward"></ion-icon></button>
+				<button type="button" class="icon skip" onclick="showScreen('results');showToast('You can relaunch the questionnaire anytime from the profile screen in the main menu')">Skip <ion-icon name="chevron-forward"></ion-icon></button>
 
 				<svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
 					<path d="M256,256s-48-96-126-96c-54.12,0-98,43-98,96s43.88,96,98,96c30,0,56.45-13.18,78-32" style="fill:none;stroke:currentColor;stroke-linecap:round;stroke-miterlimit:10;stroke-width:48px"/>
@@ -51,8 +52,8 @@
 				<h1>Welcome!</h1>
 
 				<p>
-					Enter your information on the next few pages and we'll help you find some awesome internships!<br><br>
-					Everything's optional, but the more info you provide the better your results
+					Enter your information on the next few screens and we'll help you find some awesome internships!<br><br>
+					Everything's optional, but the more information you provide, the better your results
 				</p>
 
 				<button type="button" class="btn blue next" onclick="showScreen('onboarding-1')">Get Started</button>
@@ -201,7 +202,7 @@
 
 					<label class="sponsor material-switch">
 						<input type="checkbox" />
-						<span>Must be willing to sponsor</span>
+						<span>I need to be sponsored to work in the U.S.</span>
 					</label>
 				</form>
 
@@ -348,7 +349,7 @@
 					<li>
 						<label>
 							<input type="checkbox" />
-							<span>Workaholism</span>
+							<span>Other</span>
 						</label>
 					</li>
 				</ul>
@@ -496,7 +497,7 @@
 					<li>
 						<label>
 							<input type="checkbox" />
-							<span>Workaholism</span>
+							<span>Other</span>
 						</label>
 					</li>
 				</ul>
@@ -1247,6 +1248,99 @@
 					<button type="button" class="btn blue submit" onclick="submitApplication()">Submit Application</button>
 				</div>
 			</div>
+
+			<div class="screen profile placeholder">
+				<header class="app-bar">
+					<button type="button" class="icon menu" onclick="document.getElementById('nav-menu').classList.add('visible')"><ion-icon name="menu"></ion-icon></button>
+
+					<h1>My Profile</h1>
+
+					<button type="button" class="icon placeholder"></button>
+				</header>
+
+				<main>
+					<p>Placeholder profile screen.</p>
+
+					<p>This screen will contain options to update the following:</p>
+
+					<p>There will also be an option to re-run the onboarding flow from this screen</p>
+
+					<ul>
+						<li>Name</li>
+						<li>Email (used in shared profile when applying and for email alerts)</li>
+						<li>Headline (used in shared profile when applying)</li>
+						<li>School (used in shared profile when applying)</li>
+						<li>Program</li>
+						<li>Field(s) of study</li>
+						<li>Current year (i.e. Sophomore)</li>
+						<li>School year</li>
+						<li>GPA</li>
+						<li>Saved resumes</li>
+					</ul>
+				</main>
+			</div>
+
+			<div class="screen searches placeholder">
+				<header class="app-bar">
+					<button type="button" class="icon menu" onclick="document.getElementById('nav-menu').classList.add('visible')"><ion-icon name="menu"></ion-icon></button>
+
+					<h1>My Searches</h1>
+
+					<button type="button" class="icon placeholder"></button>
+				</header>
+
+				<main>
+					<p>Placeholder saved searches screen.</p>
+
+					<p>This screen will contain a list of saved searches and options to manage each. Options will include:</p>
+
+					<ul>
+						<li>Enabling or disabling email alerts and notifications for each search</li>
+						<li>Deleting searches</li>
+						<li>Modifying search parameters</li>
+					</ul>
+				</main>
+			</div>
+
+			<div class="screen settings placeholder">
+				<header class="app-bar">
+					<button type="button" class="icon menu" onclick="document.getElementById('nav-menu').classList.add('visible')"><ion-icon name="menu"></ion-icon></button>
+
+					<h1>App Settings</h1>
+
+					<button type="button" class="icon placeholder"></button>
+				</header>
+
+				<main>
+					<p>Placeholder app settings screen.</p>
+
+					<p>This screen will contain options to update at least the following:</p>
+
+					<ul>
+						<li>Notification preferences</li>
+						<li>Data collection options</li>
+						<li>Privacy policy and ToS</li>
+					</ul>
+				</main>
+			</div>
+
+			<div class="screen help placeholder">
+				<header class="app-bar">
+					<button type="button" class="icon menu" onclick="document.getElementById('nav-menu').classList.add('visible')"><ion-icon name="menu"></ion-icon></button>
+
+					<h1>Help</h1>
+
+					<button type="button" class="icon placeholder"></button>
+				</header>
+
+				<main>
+					<p>Placeholder help center screen.</p>
+
+					<p>This screen will contain a help center with common issues, an FAQ and an option to search the knowledge base.</p>
+
+					<p>The privacy policy and ToS will also be linked here.</p>
+				</main>
+			</div>
 		</div>
 
 		<script>
@@ -1268,14 +1362,14 @@
 
 				document.querySelector('.screen.' + screenName).classList.add("visible");
 
-				let pageNav;
+				let screenNav;
 
-				if ((pageNav = mainNav.querySelector(".active")) instanceof HTMLElement) {
-					pageNav.classList.remove("active");
+				if ((screenNav = mainNav.querySelector(".active")) instanceof HTMLElement) {
+					screenNav.classList.remove("active");
 				}
 
-				if ((pageNav = mainNav.querySelector(`span[data-page="${screenName}"]`)) instanceof HTMLElement) {
-					pageNav.classList.add("active");
+				if ((screenNav = mainNav.querySelector(`span[data-screen="${screenName}"]`)) instanceof HTMLElement) {
+					screenNav.classList.add("active");
 				}
 			}
 
@@ -1300,7 +1394,7 @@
 				e.currentTarget.firstElementChild.setAttribute('name', e.currentTarget.classList.toggle('saved') ? 'heart' : 'heart-outline');
 			}
 
-			function submitApplication() {
+			function showToast(contents) {
 				let existing = document.querySelector(".screen-container > .toast");
 
 				// Remove any other active toast
@@ -1310,21 +1404,24 @@
 
 				let p = document.createElement("p");
 				p.classList.add("toast");
+				p.innerHTML = contents;
 
+				document.querySelector(".screen-container").appendChild(p);
+
+				setTimeout(() => p.parentElement.removeChild(p), 6000);
+			}
+
+			function submitApplication() {
 				if (document.querySelector(".screen.details .apply-modal .resume .error")) {
-					p.innerHTML = "Please select a resume before continuing";
+					showToast("Please select a resume before continuing");
 				}
 				else {
 					document.querySelector(".screen.details .apply-modal").classList.remove("visible")
 
 					showScreen("results");
 
-					p.innerHTML = "Application successfully submitted";
+					showToast("Application successfully submitted");
 				}
-
-				document.querySelector(".screen-container").appendChild(p);
-
-				setTimeout(() => p.parentElement.removeChild(p), 6000);
 			}
 
 			mainNav.addEventListener("click", e => {
@@ -1332,8 +1429,8 @@
 					e.currentTarget.classList.remove("visible");
 				}
 
-				if (e.target instanceof HTMLElement && e.target.hasAttribute("data-page")) {
-					showScreen(e.target.getAttribute("data-page"));
+				if (e.target instanceof HTMLElement && e.target.hasAttribute("data-screen")) {
+					showScreen(e.target.getAttribute("data-screen"));
 				}
 			});
 
