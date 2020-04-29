@@ -16,18 +16,6 @@
 	</head>
 
 	<body>
-		<div class="modal gpa" onclick="this.classList.remove('visible')">
-			<div class="content">
-				<p>Sharing your GPA is optional, but helps us match you with internships where you meet employer preferences.</p>
-
-				<p><a href="#">Learn more</a> about your privacy</p>
-
-				<div class="buttons">
-					<button type="button" class="btn flat blue ok">Got it</button>
-				</div>
-			</div>
-		</div>
-
 		<div class="screen-container">
 			<nav class="menu" id="nav-menu">
 				<span data-screen="results">Home</span>
@@ -56,17 +44,11 @@
 			<div class="screen welcome">
 				<button type="button" class="icon skip" onclick="showScreen('results');showToast('You can relaunch the questionnaire anytime from the profile screen in the main menu')">Skip <ion-icon name="chevron-forward"></ion-icon></button>
 
-				<svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-					<path d="M256,256s-48-96-126-96c-54.12,0-98,43-98,96s43.88,96,98,96c30,0,56.45-13.18,78-32" style="fill:none;stroke:currentColor;stroke-linecap:round;stroke-miterlimit:10;stroke-width:48px"/>
-					<path d="M256,256s48,96,126,96c54.12,0,98-43,98-96s-43.88-96-98-96c-29.37,0-56.66,13.75-78,32" style="fill:none;stroke:currentColor;stroke-linecap:round;stroke-miterlimit:10;stroke-width:48px"/>
-				</svg>
+				<div class="logo"></div>
 
-				<h1>Welcome!</h1>
+				<h1>Welcome to<br>Infinite Internships!</h1>
 
-				<p>
-					Enter your information on the next few screens and we'll help you find some awesome internships!<br><br>
-					Everything's optional, but the more information you provide, the better your results
-				</p>
+				<p>Click below to get started and find awesome internships</p>
 
 				<button type="button" class="btn blue next" onclick="showScreen('onboarding-1')">Get Started</button>
 			</div>
@@ -1356,6 +1338,18 @@
 
 					<p>The privacy policy and ToS will also be linked here.</p>
 				</main>
+			</div>
+		</div>
+
+		<div class="modal gpa" onclick="this.classList.remove('visible')">
+			<div class="content">
+				<p>Sharing your GPA is optional, but helps us match you with internships where you meet employer preferences.</p>
+
+				<p><a href="#">Learn more</a> about your privacy</p>
+
+				<div class="buttons">
+					<button type="button" class="btn flat blue ok">Got it</button>
+				</div>
 			</div>
 		</div>
 

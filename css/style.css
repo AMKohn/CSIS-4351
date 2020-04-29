@@ -285,7 +285,7 @@ body {
 
 .app-bar .logo {
 	height: 45px;
-	color: #0082FB;
+	color: #0075ff;
 }
 
 .app-bar h1 {
@@ -597,21 +597,48 @@ form .section .selected span:after {
 	/ Welcome
 */
 .screen.welcome .logo {
-	color: #FFF;
-	width: 75%;
-	margin: 0 auto 30px;
+	font-size: 128px;
+	color: transparent;
 	flex: 1;
+	margin-top: 50%;
+	padding-left: 9%;
+	-webkit-text-stroke: 3px currentColor;
 }
 
-.screen.welcome:after {
-	content: "Infinite Internships";
-	position: absolute;
-	top: 280px;
-	width: 100%;
-	left: 0;
-	font-size: 30px;
-	text-align: center;
-	font-weight: 300;
+.screen.welcome.visible .logo {
+	animation: logo 2s ease forwards;
+}
+
+@font-face {
+	font-family: 'infinite-icon';
+	src: url('data:application/font-woff;base64,d09GRgABAAAAAAPoAAoAAAAABkQAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABPUy8yAAAA9AAAAD4AAABWT/ldgGNtYXAAAAE0AAAAPAAAAUoAlAF3Z2x5ZgAAAXAAAACdAAAAzBuhayBoZWFkAAACEAAAACwAAAA2GLxzWWhoZWEAAAI8AAAAHAAAACQGMAADaG10eAAAAlgAAAAIAAAACAQAAABsb2NhAAACYAAAAAYAAAAGAGYAAG1heHAAAAJoAAAAHgAAACABDQBObmFtZQAAAogAAAFFAAACbb6IpjZwb3N0AAAD0AAAABUAAAApAQsAAHicY2BkYmCcwMDKwMHowpjGwMDgDqW/MkgytDAwMDGwMjNgBQFprikMDgyODI5MIK4e0wewMCOIAABE0gchAAB4nGNgYGBmgGAZBkYGEHAB8hjBfBYGDSDNBqQZGZiALMf//8EqwPT/A1D1QMDIxkA5YCSsZDADALO5Bwd4nGNgZAACFgamDwyODAyMeozqBoZAgo+RXY5R3I7R3I5RjpGdjZ1NGSgI5AIFDQwhMhBVfEAt5mbmZsZAQSDXgJm3ZzYrU32uVzITU7KXQ4wwl7QYE5eOqYNjeiczc2c6fllGId59IryLuJkSPD0SmJgdJLiYRKS5DeWUmNpT09qZYJIenmBJbkZhGW5DWWWm9rTUdiYGBgDF3iIvAAAAeJxjYGRgYABi1pCDzPH8Nl8ZuJkYQODWeYltyDQLA9MHIMXBAJYGAPlOCLp4nGNgZGBgYgACPRD5j4GFgYGRARUwAQAbzAE5AgAAAAIAAAAAAAAAAGYAAHicY2BkYGBgYnBiANEgFgMDFxAyMPwH8xkADwkBXAAAeJx1j0tOwzAQhv/0waOVUEUFOyQvEAtA6UOsumHX7LvoPm2dNlUaR45bqQfgPByBE3AEuAF34MedIlEg1ni++TyZxADO8Y4Au+eCseMAJ6x2XMExroSr9NfCNfK9cB1NPAgf0T8KN3CHSLiJNiwnBLVTVrd4Eg7QwrNwBWd4Ea7SvwrXyG/CdVziQ/gIraAq3MA4aAs3cROkkc61jZ2eqclWRdm2WDht0zxJ89TpkZ6vs/i73OextmVqctULu3v1Y0y5mfedS1RizUoNTe50lhlVWLPUUxcunCsGnU4iPpyaFa+vkTMsYjjmGRQm2HKPkDEXWHhvkbIv8XvqzYgxx5pd8R+nh/XYzyhZGTqFHkJ0f3X9/zclNvxan9bxDcWwnLQiDf3Er+6My9AU/mxJM6UP/Q0c7QAdruSgP2QXJ30Cc7tv3AAAAHicY2BigABWBuwAKM8IUgMAATYADQAAAA==') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+.screen.welcome .logo:before {
+	content: 'A';
+	display: inline-block;
+	font-family: 'infinite-icon', sans-serif;
+	font-style: normal;
+	font-weight: normal;
+	-webkit-font-smoothing: antialiased;
+}
+
+@keyframes logo {
+	0% {
+		text-shadow: none;
+		color: #097aff;
+	}
+	50% {
+		text-shadow: 7px 7px 16px rgba(0, 48, 223, 0.6), -7px -7px 16px rgba(255,255,255, .4);
+		color: #097aff;
+
+	}
+	100% {
+		text-shadow: none;
+		color: #FFF;
+	}
 }
 
 .screen.welcome button.skip {
@@ -622,14 +649,14 @@ form .section .selected span:after {
 }
 
 .screen.welcome {
-	background: #0030df;
+	background: #0075ff;
 	color: #FFF;
 	display: flex;
 	padding: 0 25px;
 }
 
 .welcome h1 {
-	font-size: 40px;
+	font-size: 32px;
 	font-weight: 500;
 }
 
@@ -637,6 +664,7 @@ form .section .selected span:after {
 	margin: 20px 0 45px;
 	text-align: left;
 	line-height: 1.7;
+	font-size: 16px;
 	color: rgba(255, 255, 255, 0.75);
 }
 
@@ -663,7 +691,7 @@ form .section .selected span:after {
 .onboarding .app-bar {
 	color: #FFF;
 	padding: 0 4px;
-	background: #0030df;
+	background: #0075ff;
 }
 
 .onboarding .app-bar button {
