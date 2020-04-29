@@ -57,12 +57,14 @@
 				<header class="app-bar">
 					<button type="button" class="icon prev" onclick="showScreen('welcome')"><ion-icon name="chevron-back"></ion-icon> Prev</button>
 
-					<h1>Academics</h1>
+					<h1>Profile</h1>
 
 					<button type="button" class="icon next" onclick="showScreen('onboarding-2')">Next <ion-icon name="chevron-forward"></ion-icon></button>
 				</header>
 
-				<form class="academics" autocomplete="off">
+				<form autocomplete="off">
+					<p>Feel free to leave any of the fields blank, you can edit your profile later</p>
+
 					<div class="section program">
 						<label for="program">Program</label>
 
@@ -110,6 +112,11 @@
 
 						<input type="number" id="gpa" placeholder="Enter your GPA on a 4.0 scale" />
 					</div>
+
+					<label class="sponsor material-switch">
+						<input type="checkbox" />
+						<span>I need sponsorship to work in the U.S.</span>
+					</label>
 				</form>
 
 				<p class="progress">1 of 4</p>
@@ -125,6 +132,8 @@
 				</header>
 
 				<form class="requirements" autocomplete="off">
+					<p>Tell us what you're looking for in an internship. You can change these at any time</p>
+
 					<div class="section location">
 						<label for="ob-location">Location</label>
 
@@ -144,32 +153,28 @@
 						</div>
 					</div>
 
-					<div class="section commute">
-						<label for="ob-commute">Maximum Commute</label>
+					<div class="section slider commute">
+						<label for="ob-commute">
+							Maximum Commute
 
-						<select id="ob-commute">
-							<option>5 minutes</option>
-							<option>15 minutes</option>
-							<option>30 minutes</option>
-							<option>45 minutes</option>
-							<option>1 hour</option>
-							<option>1.5 hours</option>
-							<option>3 hours</option>
-						</select>
+							<span class="value">30 mins</span>
+						</label>
+
+						<div class="material-slider">
+							<input id="ob-commute" type="range" min="0" max="6" value="2" oninput="this.parentElement.previousElementSibling.lastElementChild.innerText=['5 mins', '15 mins', '30 mins', '45 mins', '1 hour', '1.5 hours', '3 hours'][this.value]" />
+						</div>
 					</div>
 
-					<div class="section min-pay">
-						<label for="min-pay">Minimum Pay</label>
+					<div class="section slider pay">
+						<label for="ob-pay">
+							Minimum Pay
 
-						<select id="min-pay">
-							<option>Unpaid</option>
-							<option>Contract</option>
-							<option>$10/hour</option>
-							<option>$15/hour</option>
-							<option>$20/hour</option>
-							<option>$30/hour</option>
-							<option>$40/hour</option>
-						</select>
+							<span class="value">$0/hour</span>
+						</label>
+
+						<div class="material-slider">
+							<input id="ob-pay" type="range" min="0" max="50" value="0" oninput="this.parentElement.previousElementSibling.lastElementChild.innerText='$' + this.value + '/hour'" />
+						</div>
 					</div>
 
 					<div class="section term">
@@ -191,12 +196,7 @@
 
 					<label class="credit material-switch">
 						<input type="checkbox" />
-						<span>Must be willing to offer academic credit</span>
-					</label>
-
-					<label class="sponsor material-switch">
-						<input type="checkbox" />
-						<span>I need sponsorship to work in the U.S.</span>
+						<span>I need academic credit</span>
 					</label>
 				</form>
 
@@ -232,10 +232,10 @@
 								<label>
 									<input type="checkbox" />
 									<span>Mobile App Development</span>
-									<button type="button" class="expand"><ion-icon name="chevron-down-outline"></ion-icon></button>
+									<button type="button" class="expand"><ion-icon name="chevron-forward-outline"></ion-icon></button>
 								</label>
 
-								<ul>
+								<ul class="collapsed">
 									<li>
 										<label>
 											<input type="checkbox" />
@@ -355,7 +355,7 @@
 				<header class="app-bar">
 					<button type="button" class="icon prev" onclick="showScreen('onboarding-3')"><ion-icon name="chevron-back-outline"></ion-icon> Prev</button>
 
-					<h1>Company Industries</h1>
+					<h1>Work Industries</h1>
 
 					<button type="button" class="icon next" onclick="showScreen('results')">Next <ion-icon name="chevron-forward-outline"></ion-icon></button>
 				</header>
@@ -756,9 +756,11 @@
 
 			<div class="screen filter">
 				<header class="app-bar">
-					<button type="button" class="icon back" onclick="showScreen(true)"><ion-icon name="chevron-back-outline"></ion-icon> Back</button>
+					<button type="button" class="icon back" onclick="showScreen(true)"><ion-icon name="chevron-back-outline"></ion-icon></button>
 
-					<button type="button" class="btn flat blue" onclick="showScreen('results')">Update Results</button>
+					<h1>Unsaved search</h1>
+
+					<button type="button" class="icon save" onclick="document.querySelector('.modal.save-search').classList.toggle('visible', true)"><ion-icon name="bookmark-outline"></ion-icon></button>
 				</header>
 
 				<form class="filters" autocomplete="off">
@@ -769,15 +771,14 @@
 					</div>
 
 					<div class="section sort">
-						<label for="sort">Sort by</label>
+						<h3>Sort by</h3>
 
-						<select id="sort">
-							<option>Relevance</option>
-							<option>Distance</option>
-							<option>Commute time</option>
-							<option>Posted date</option>
-							<option>Compensation</option>
-						</select>
+						<div class="toggle-list" onclick="this.querySelector('.active').classList.remove('active');event.target.classList.add('active')">
+							<span class="active">Relevance</span>
+							<span>Commute</span>
+							<span>Date</span>
+							<span>Pay</span>
+						</div>
 					</div>
 
 					<div class="section function">
@@ -794,10 +795,8 @@
 						</ul>
 
 						<div class="selected">
-							<span class="selected-chip">Backend web development</span>
 							<span class="selected-chip">Embedded</span>
 							<span class="selected-chip">Data Analysis</span>
-							<span class="selected-chip">IT Support</span>
 						</div>
 					</div>
 
@@ -820,18 +819,52 @@
 						</div>
 					</div>
 
-					<div class="section commute">
-						<label for="commute">Maximum Commute</label>
+					<div class="section slider commute">
+						<label for="commute">
+							Maximum Commute
 
-						<select id="commute">
-							<option>5 minutes</option>
-							<option>15 minutes</option>
-							<option>30 minutes</option>
-							<option>45 minutes</option>
-							<option>1 hour</option>
-							<option>1.5 hours</option>
-							<option>3 hours</option>
-						</select>
+							<span class="value">30 mins</span>
+						</label>
+
+						<div class="material-slider">
+							<input id="commute" type="range" min="0" max="6" value="2" oninput="this.parentElement.previousElementSibling.lastElementChild.innerText=['5 mins', '15 mins', '30 mins', '45 mins', '1 hour', '1.5 hours', '3 hours'][this.value]" />
+						</div>
+					</div>
+
+					<div class="section slider pay">
+						<label for="pay">
+							Minimum Pay
+
+							<span class="value">$0/hour</span>
+						</label>
+
+						<div class="material-slider">
+							<input id="pay" type="range" min="0" max="50" value="0" oninput="this.parentElement.previousElementSibling.lastElementChild.innerText='$' + this.value + '/hour'" />
+						</div>
+					</div>
+
+					<label class="credit material-switch">
+						<input type="checkbox" />
+						<span>Limit to academic credit offered</span>
+					</label>
+
+					<div class="section industry">
+						<label for="industry">Work Industry</label>
+
+						<input type="text" id="industry" placeholder="Start typing..." />
+
+						<ul class="autocomplete">
+							<li>Frontend development</li>
+							<li>Backend web development</li>
+							<li>Embedded</li>
+							<li>Data Analysis</li>
+							<li>IT Support</li>
+						</ul>
+
+						<div class="selected">
+							<span class="selected-chip">Construction</span>
+							<span class="selected-chip">Healthcare</span>
+						</div>
 					</div>
 
 					<div class="section term">
@@ -850,32 +883,9 @@
 							<span class="selected-chip">Fall 2020</span>
 						</div>
 					</div>
-
-					<label class="credit material-switch">
-						<input type="checkbox" />
-						<span>Limit to academic credit offered</span>
-					</label>
-
-					<div class="section company-size">
-						<label for="company-size">Company Size</label>
-
-						<select id="company-size" onchange="addSelectChip(this)">
-							<option selected disabled hidden value="initial">Select one to add</option>
-							<option>1 - 5 employees</option>
-							<option>5 - 15 employees</option>
-							<option>15 - 30 employees</option>
-							<option>30 - 50 employees</option>
-							<option>50 - 250 employees</option>
-							<option>250 - 500 employees</option>
-							<option>500+ employees</option>
-						</select>
-
-						<div class="selected">
-							<span class="selected-chip">1 - 5 employees</span>
-							<span class="selected-chip">5 - 15 employees</span>
-						</div>
-					</div>
 				</form>
+
+				<button type="button" class="btn blue update" onclick="showScreen('results')">Update Results</button>
 			</div>
 
 			<div class="screen applications">
@@ -1267,8 +1277,8 @@
 						<li>Program</li>
 						<li>Field(s) of study</li>
 						<li>Current year (i.e. Sophomore)</li>
-						<li>School year</li>
 						<li>GPA</li>
+						<li>Sponsorship needs</li>
 						<li>Saved resumes</li>
 					</ul>
 
@@ -1353,6 +1363,19 @@
 			</div>
 		</div>
 
+		<div class="modal save-search">
+			<div class="content">
+				<label class="title" for="search-name">Save search</label>
+
+				<input id="search-name" type="text" placeholder="Enter a name for the search" autocomplete="off" onkeydown="event.keyCode === 13 && saveSearch(this.parentElement.parentElement)">
+
+				<div class="buttons">
+					<button type="button" class="btn flat cancel" onclick="this.parentElement.parentElement.parentElement.classList.remove('visible')">Cancel</button>
+					<button type="button" class="btn flat blue ok" onclick="saveSearch(this.parentElement.parentElement.parentElement)">Save</button>
+				</div>
+			</div>
+		</div>
+
 		<script>
 			// This is all very hacky, but this is just a prototype
 			let mainNav = document.getElementById("nav-menu");
@@ -1432,6 +1455,22 @@
 
 					showToast("Application successfully submitted");
 				}
+			}
+
+			function saveSearch(dialogElm) {
+				let input = document.getElementById("search-name");
+
+				if (!input.value) {
+					return;
+				}
+
+				let h1 = document.querySelector(".screen.filter .app-bar h1");
+
+				h1.innerText = input.value;
+
+				h1.nextElementSibling.outerHTML = `<button type="button" class="icon save saved" onclick="this.classList.toggle('saved');requestAnimationFrame(() => this.classList.toggle('saved'))"><ion-icon name="bookmark"></ion-icon></button>`;
+
+				dialogElm.classList.remove("visible");
 			}
 
 			mainNav.addEventListener("click", e => {

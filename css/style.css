@@ -233,8 +233,8 @@ body {
 	position: absolute;
 	transform: translateY(-50%) scale(0.85);
 	box-shadow: 0 11px 15px -7px rgba(0, 0, 0, 0.2),
-				0 24px 38px 3px rgba(0, 0, 0, 0.14),
-				0 9px 46px 8px rgba(0,0,0,.12);
+	0 24px 38px 3px rgba(0, 0, 0, 0.14),
+	0 9px 46px 8px rgba(0,0,0,.12);
 	transition: all .3s cubic-bezier(0.68, -0.6, 0.32, 1.6);
 }
 
@@ -263,6 +263,30 @@ body {
 
 .modal .buttons button {
 	font-size: 14px;
+}
+
+.modal h1, .modal .title {
+	font-size: 20px;
+	font-weight: 500;
+	margin-bottom: 6px;
+	color: #212121;
+}
+
+.modal input {
+	margin: 16px 0;
+	font-size: 14px;
+	width: 100%;
+	padding: 10px 14px;
+	font-family: Roboto, sans-serif;
+	border: 1px solid rgba(0, 0, 0, 0.05);
+	transition: all .15s;
+	border-radius: 4px;
+	background: rgba(0, 0, 0, 0.05);
+}
+
+.modal input:focus, .modal input:active {
+	border-color: #2196F3;
+	background: rgba(0, 0, 0, 0.075);
 }
 
 
@@ -442,7 +466,7 @@ button.icon.save.saved:after {
 form {
 	overflow: auto;
 	overflow: overlay;
-	padding-top: 6px;
+	padding: 12px 0 45px;
 }
 
 form .material-switch {
@@ -451,43 +475,46 @@ form .material-switch {
 }
 
 form .section {
-	padding: 12px 20px;
+	padding: 12px 24px;
 	position: relative;
 }
 
 form .section label, form .section h3 {
-	font-weight: 700;
+	font-weight: 500;
 	color: #444;
 	display: block;
-	margin-bottom: 6px;
+	margin-bottom: 12px;
+	font-size: 13px;
+	text-transform: uppercase;
+}
+
+form .section input:not([type="range"]), form .section select {
 	font-size: 14px;
-}
-
-form .section input, form .section select {
 	width: 100%;
-	padding: 8px 10px 6px;
+	padding: 10px 14px;
 	font-family: Roboto, sans-serif;
-	border-bottom: 1px solid #666;
+	border: 1px solid rgba(0, 0, 0, 0.05);
 	transition: all .15s;
+	border-radius: 4px;
+	background: rgba(0, 0, 0, 0.05);
 }
 
-form .section input:focus, form .section select:focus,
-form .section input:active, form .section select:active {
+form .section input:not([type="range"]):focus, form .section select:focus,
+form .section input:not([type="range"]):active, form .section select:active {
 	border-color: #2196F3;
-	border-width: 2px;
-	margin-bottom: -1px;
-	background: rgba(0, 0, 0, 0.05);
+	background: rgba(0, 0, 0, 0.075);
 }
 
 form .section .autocomplete {
 	position: absolute;
 	background: #FFF;
-	left: 0;
-	right: 0;
-	top: 65px;
+	left: 24px;
+	right: 24px;
+	top: 80px;
 	z-index: 1;
 	max-height: 0;
 	overflow: hidden;
+	border-radius: 4px;
 	box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14);
 	transition: all .3s;
 	transition-delay: 0.075s; /* Fixes event listener issues */
@@ -508,20 +535,21 @@ form .section .autocomplete li:hover {
 }
 
 form .section .selected {
-	margin-top: 10px;
+	margin-top: 2px;
 }
 
 form .section .selected span {
 	cursor: pointer;
 	padding: 0 12px;
-	font-size: 13px;
-	font-weight: 500;
-	background: rgba(0, 0, 0, .05);
-	margin: 4px 2px;
-	line-height: 26px;
-	display: inline-block;
 	border-radius: 13px;
-	border: 1px inset rgba(0, 0, 0, 0.1);
+	margin: 12px 3px 0;
+	line-height: 26px;
+	font-size: 13px;
+	display: inline-block;
+	border: 1px solid rgba(30, 136, 229, 0.15);
+	font-weight: 500;
+	color: rgb(18, 102, 185);
+	background: rgba(30, 136, 229, 0.15);
 }
 
 form .section .selected span:after {
@@ -531,7 +559,47 @@ form .section .selected span:after {
 	margin-left: 3px;
 	margin-right: -6px;
 	display: inline-block;
-	content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M289.94,256l95-95A24,24,0,0,0,351,127l-95,95-95-95A24,24,0,0,0,127,161l95,95-95,95A24,24,0,1,0,161,385l95-95,95,95A24,24,0,0,0,385,351Z"/></svg>');
+	content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="rgb(18, 102, 185)"><path d="M289.94,256l95-95A24,24,0,0,0,351,127l-95,95-95-95A24,24,0,0,0,127,161l95,95-95,95A24,24,0,1,0,161,385l95-95,95,95A24,24,0,0,0,385,351Z"/></svg>');
+}
+
+form .toggle-list {
+	display: flex;
+	text-align: center;
+	overflow: hidden;
+	border-radius: 20px;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+form .toggle-list span {
+	flex: 1 1;
+	padding: 8px 14px;
+	text-transform: uppercase;
+	font-weight: 500;
+	font-size: 12px;
+	cursor: pointer;
+	border-radius: inherit;
+	border: 1px solid transparent;
+	transition: all .15s ease;
+}
+
+form div.toggle-list span.active {
+	color: rgba(18, 102, 185);
+	border: 1px solid rgba(30, 136, 229, 0.15);
+	background: rgba(30, 136, 229, 0.15);
+}
+
+form .toggle-list span:hover,
+form .toggle-list span:active {
+	background: rgba(0, 0, 0, 0.05);
+}
+
+form .section.slider .value {
+	float: right;
+	font-weight: 400;
+}
+
+form .section.slider .material-slider {
+	margin: -6px 0;
 }
 
 
@@ -704,6 +772,12 @@ form .section .selected span:after {
 
 .onboarding form {
 	flex: 1;
+}
+
+.onboarding form > p {
+	color: #666;
+	line-height: 1.3;
+	padding: 8px 18px;
 }
 
 .onboarding .gpa .why {
@@ -1229,8 +1303,14 @@ ul.internship-list {
 /*---------------------------------------------
 	/ Filter
 */
-.filter .app-bar {
-	padding-left: 6px;
-	box-shadow: none;
-	border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+.filter .btn.update {
+	font-size: 16px;
+	border-radius: 0;
+	padding: 20px 30px;
+	box-shadow: 0 -1px 3px rgba(0,0,0,.15);
+}
+
+.filter button.icon.save.saved,
+.filter button.icon.save:after {
+	color: #1E88E5;
 }
