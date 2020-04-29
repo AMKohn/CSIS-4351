@@ -1223,6 +1223,7 @@ ul.internship-list {
 	margin: 20px auto;
 	padding: 20px 35px;
 	display: block;
+	font-size: 15px;
 }
 
 .details .apply-modal form .material-switch {
