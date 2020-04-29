@@ -1522,19 +1522,35 @@
 			});
 
 			const internships = [
-				["Embedded App Development", "IMAGIK", "Unpaid", "Doral, FL", "Summer 2020", "Aviation"],
-				["Communications Integrations", "Skyline Communications", "$15/hour", "Fort Lauderdale, FL", "Summer 2020", "Telecommunications"],
-				["Investment Market Research", "Comvest Partners", "$22/hour", "West Palm Beach, FL", "Summer 2020", "Private Equity"],
-				["IT Support", "Adrienne Arsht Center", "Credit-only", "Miami, FL", "Summer 2020", "Art & Cultural"],
-				["RF Component Design", "SV Microwave", "$20/hour", "West Palm Beach, FL", "Fall 2020", "Manufacturing"],
-				["Marketing Graphic Design", "PALM ERA Marketing", "$15/hour", "Hollywood, FL", "Summer 2020", "Marketing"],
-				["iOS App Development", "Linkz Tech", "Unpaid", "Hollywood, FL", "Summer 2020", "Software Development"],
-				["Engineering Project Management", "The Weitz Company", "$15/hour", "West Palm Beach, FL", "Fall 2020", "Construction"],
-				["Budget Analysis", "UPS", "$12/hour", "Miami, FL", "Summer 2020", "Transportation & Logistics"],
-				["Social Media Relations", "American Red Cross", "Unpaid", "Remote", "Summer 2020", "NGO"],
-				["IT Solutions Analysis", "CareCloud", "$20/hour", "Miami, FL", "Summer 2020", "IT Solutions - Healthcare"],
-				["IT Management", "Ray Dass Test Prep", "Unpaid", "Cooper City, FL", "Fall 2020", "K-12 Education"]
+				["Embedded App Development", "IMAGIK", "Unpaid", "Doral, FL", "Summer 2020", "Aviation", { pay: "credit", type: "full", term: "summer" }],
+				["Communications Integrations", "Skyline Communications", "$15/hour", "Fort Lauderdale, FL", "Summer 2020", "Telecommunications", { pay: 15, type: "part", term: "summer" }],
+				["Investment Market Research", "Comvest Partners", "$22/hour", "West Palm Beach, FL", "Summer 2020", "Private Equity", { pay: 22, type: "part", term: "summer" }],
+				["IT Support", "Adrienne Arsht Center", "Credit-only", "Miami, FL", "Summer 2020", "Art & Cultural", { pay: "credit", type: "full", term: "summer" }],
+				["RF Component Design", "SV Microwave", "$20/hour", "West Palm Beach, FL", "Fall 2020", "Manufacturing", { pay: 20, type: "part", term: "fall" }],
+				["Marketing Graphic Design", "PALM ERA Marketing", "$15/hour", "Hollywood, FL", "Summer 2020", "Marketing", { pay: 15, type: "full", term: "summer" }],
+				["iOS App Development", "Linkz Tech", "Unpaid", "Hollywood, FL", "Summer 2020", "Software Development", { pay: "unpaid", type: "full", term: "summer" }],
+				["Engineering Project Management", "The Weitz Company", "$15/hour", "West Palm Beach, FL", "Fall 2020", "Construction", { pay: 15, type: "full", term: "fall" }],
+				["Budget Analysis", "UPS", "$12/hour", "Miami, FL", "Summer 2020", "Transportation & Logistics", { pay: 12, type: "part", term: "summer" }],
+				["Social Media Relations", "American Red Cross", "Unpaid", "Remote", "Summer 2020", "NGO", { pay: "unpaid", type: "part", term: "summer" }],
+				["IT Solutions Analysis", "CareCloud", "$20/hour", "Miami, FL", "Summer 2020", "IT Solutions - Healthcare", { pay: 20, type: "full", term: "summer" }],
+				["IT Management", "Ray Dass Test Prep", "Unpaid", "Cooper City, FL", "Fall 2020", "K-12 Education", { pay: "unpaid", type: "full", term: "fall" }]
 			];
+
+			function getTagsHTML(tags) {
+				let html = "";
+
+				if (typeof tags.pay === "number")	html += `<span class="pay">$${tags.pay}/hour</span>`
+				else if (tags.pay === "unpaid")		html += `<span class="pay unpaid">Unpaid</span>`
+				else if (tags.pay === "credit")		html += `<span class="pay credit">Credit-only</span>`
+
+				if (tags.type === "full")		html += `<span class="type full">Full-time</span>`
+				else if (tags.type === "part")	html += `<span class="type part">Part-time</span>`
+
+				if (tags.term === "summer")		html += `<span class="term summer">Summer 2020</span>`
+				else if (tags.term === "fall")	html += `<span class="term fall">Fall 2020</span>`
+
+				return html;
+			}
 
 			function showInternship(idx, saved, applyDisabled, applyText) {
 				saved = !!saved;
@@ -1549,6 +1565,8 @@
 				getElm(".company .title").innerText = iData[1];
 				getElm(".internship .industry").innerText = iData[5];
 				getElm(".company .industry").innerText = iData[5];
+
+				getElm(".tags").innerHTML = getTagsHTML(iData[6]);
 
 				let s = getElm(".app-bar .save");
 
