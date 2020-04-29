@@ -716,12 +716,17 @@ form .section .selected span:after {
 */
 .screen.placeholder main {
 	flex: 1;
-	padding: 15px;
+	padding: 25px;
 	overflow: overlay;
+	background: #EFEFEF;
 }
 
 .screen.placeholder p {
 	margin-bottom: 1em;
+}
+
+.screen.placeholder ul {
+	margin: 1.5em 0;
 }
 
 .screen.placeholder li {
